@@ -49,7 +49,7 @@ namespace GetGo.Repository.Implements
         public async Task UpdateRating(string id, float rating)
         {
             Location location = await _tourismLocations.Find(tl => tl.Id == id).FirstOrDefaultAsync();
-            location.Rating.UserRating = rating;
+            location.WebsiteRatingOverall = rating;
             await _tourismLocations.ReplaceOneAsync(tl => tl.Id == id, location);
         }
     }
