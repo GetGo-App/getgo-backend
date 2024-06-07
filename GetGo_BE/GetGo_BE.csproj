@@ -19,4 +19,8 @@
     <ProjectReference Include="..\GetGo.Repository\GetGo.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\Message\" />
+  </ItemGroup>
+
 </Project>

@@ -45,5 +45,7 @@ namespace GetGo_BE.Controllers
             var result = await _messageService.GetUserMessageHistory(request);
             return Ok(result);
         }
+
+
     }
 }

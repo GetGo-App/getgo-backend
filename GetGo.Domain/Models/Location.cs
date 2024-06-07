@@ -26,6 +26,8 @@ namespace GetGo.Domain.Models
         public string HotLine { get; set; }
         public string Price { get; set; }
         public Rating Rating { get; set; }
+        public Rating WebSiteRating { get; set; }
+        public float WebsiteRatingOverall { get; set; }
         public bool IsTrend {  get; set; }
         public bool IsTopYear { get; set; }
         public string CategoryId { get; set; }
