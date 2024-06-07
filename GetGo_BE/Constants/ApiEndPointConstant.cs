@@ -18,7 +18,7 @@
             public const string CategoryEndpoint = ApiEndpoint + "/categorys/{id}";
         }
 
-        public static class Comment
+        public static class Comments
         {
             public const string CommentsEndpoint = ApiEndpoint + "/comments";
             public const string CommentEndpoint = ApiEndpoint + "/comments/{id}";
@@ -37,9 +37,10 @@
             public const string UserImageEndpoint = ApiEndpoint + "/images/user/{userId}";
         }
 
-        public static class Location
+        public static class Locations
         {
             public const string LocationsEndpoint = ApiEndpoint + "/locations";
+            public const string LocationsRatingEndpoint = LocationsEndpoint + "/ratings";
             public const string SearchLocationsEndpoint = ApiEndpoint + "/locations/searching";
             public const string LocationEndpoint = ApiEndpoint + "/locations/{id}";
             public const string TrendLocationEndpoint = ApiEndpoint + "/locations/trend";

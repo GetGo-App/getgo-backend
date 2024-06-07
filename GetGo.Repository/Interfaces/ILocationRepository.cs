@@ -14,6 +14,6 @@ namespace GetGo.Repository.Interfaces
         public Task<List<Location>> GetTrendLocations();
         public Task<List<Location>> GetTopYearLocations();
         public Task<List<Location>> SearchLocation(string searchValue);
-        public Task UpdateRating(string id, float rating);
+        public Task UpdateRating(string id, Rating rating);
     }
 }

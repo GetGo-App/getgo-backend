@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GetGo.Repository.Implements
 {
-    public class LocationRepository : BaseRepository<LocationRepository>, Interfaces.ILocationRepository
+    public class LocationRepository : BaseRepository<LocationRepository>, ILocationRepository
     {
         private readonly IMongoCollection<Location> _tourismLocations;
 
@@ -46,10 +46,10 @@ namespace GetGo.Repository.Implements
                                                       tl.Address.Contains(searchValue)).ToListAsync();
         }
 
-        public async Task UpdateRating(string id, float rating)
+        public async Task UpdateRating(string id, Rating rating)
         {
             Location location = await _tourismLocations.Find(tl => tl.Id == id).FirstOrDefaultAsync();
-            location.WebsiteRatingOverall = rating;
+            location.Rating = rating;
             await _tourismLocations.ReplaceOneAsync(tl => tl.Id == id, location);
         }
     }

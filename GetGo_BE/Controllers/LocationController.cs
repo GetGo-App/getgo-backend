@@ -20,7 +20,7 @@ namespace GetGo_BE.Controllers
             _locationService = locationService;
         }
 
-        [HttpGet(ApiEndPointConstant.Location.LocationsEndpoint)]
+        [HttpGet(ApiEndPointConstant.Locations.LocationsEndpoint)]
         [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location list")]
         public async Task<IActionResult> GetLocationList()
@@ -29,8 +29,8 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Location.LocationEndpoint)]
-        [ProducesResponseType(typeof(GetLocationInfoResponse), StatusCodes.Status200OK)]
+        [HttpGet(ApiEndPointConstant.Locations.LocationEndpoint)]
+        [ProducesResponseType(typeof(Location), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location by id")]
         public async Task<IActionResult> GetLocationById(string id)
         {
@@ -38,7 +38,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Location.TrendLocationEndpoint)]
+        [HttpGet(ApiEndPointConstant.Locations.TrendLocationEndpoint)]
         [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get trend location list")]
         public async Task<IActionResult> GetTrendLocation()
@@ -47,7 +47,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Location.TopYearLocationEndpoint)]
+        [HttpGet(ApiEndPointConstant.Locations.TopYearLocationEndpoint)]
         [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get top-year location list")]
         public async Task<IActionResult> GetTopYearLocation()
@@ -56,7 +56,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Location.LocationCommentEndpoint)]
+        [HttpGet(ApiEndPointConstant.Locations.LocationCommentEndpoint)]
         [ProducesResponseType(typeof(List<Comment>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get comment list in location")]
         public async Task<IActionResult> GetLocationComments(string id)
@@ -65,13 +65,22 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Location.SearchLocationsEndpoint)]
+        [HttpGet(ApiEndPointConstant.Locations.SearchLocationsEndpoint)]
         [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Search for locations")]
         public async Task<IActionResult> SearchLocation(string searchValue)
         {
             var result = await _locationService.SearchLocation(searchValue);
             return Ok(result);
+        }
+
+        [HttpPut(ApiEndPointConstant.Locations.LocationsRatingEndpoint)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Update the rating of all locations")]
+        public async Task<IActionResult> UpdateLocationRatings()
+        {
+            await _locationService.UpdateRatings();
+            return Ok("Action success");
         }
     }
 }

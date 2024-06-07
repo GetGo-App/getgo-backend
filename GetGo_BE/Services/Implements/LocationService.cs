@@ -3,6 +3,8 @@ using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Response.Locations;
 using GetGo.Repository.Interfaces;
 using GetGo_BE.Services.Interfaces;
+using Org.BouncyCastle.Pkcs;
+using static GetGo_BE.Constants.ApiEndPointConstant;
 
 namespace GetGo_BE.Services.Implements
 {
@@ -23,20 +25,12 @@ namespace GetGo_BE.Services.Implements
             return await _tourismLocationRepository.GetTopYearLocations();
         }
 
-        public async Task<GetLocationInfoResponse> GetTourismLocationById(string id)
+        public async Task<Location> GetTourismLocationById(string id)
         {
-            List<Comment> comments = await _commentRepository.GetLocationComment(id);
+            //List<Comment> comments = await _commentRepository.GetLocationComment(id);
             Location location = await _tourismLocationRepository.GetTourismLocationById(id);
 
-            return new GetLocationInfoResponse()
-            {
-                Location = location,
-                Rating_1 = comments.Count(c => c.Rating == 1),
-                Rating_2 = comments.Count(c => c.Rating == 2),
-                Rating_3 = comments.Count(c => c.Rating == 3),
-                Rating_4 = comments.Count(c => c.Rating == 4),
-                Rating_5 = comments.Count(c => c.Rating == 5),
-            };
+            return location;
         }
 
         public async Task<List<Location>> GetTourismLocationList()
@@ -57,6 +51,25 @@ namespace GetGo_BE.Services.Implements
         public async Task<List<Location>> SearchLocation(string searchValue)
         {
             return await _tourismLocationRepository.SearchLocation(searchValue);
+        }
+
+        public async Task UpdateRatings()
+        {
+            var locations = await _tourismLocationRepository.GetTourismLocationList();
+            foreach(Location place in locations)
+            {
+                var comments = await _commentRepository.GetLocationComment(place.Id);
+                Rating rating = new Rating()
+                {
+                    star1 = comments.Where(x => x.Rating == 1).Sum(x => x.Rating) / comments.Where(x => x.Rating == 1).Count(),
+                    star2 = comments.Where(x => x.Rating == 2).Sum(x => x.Rating) / comments.Where(x => x.Rating == 2).Count(),
+                    star3 = comments.Where(x => x.Rating == 3).Sum(x => x.Rating) / comments.Where(x => x.Rating == 3).Count(),
+                    star4 = comments.Where(x => x.Rating == 4).Sum(x => x.Rating) / comments.Where(x => x.Rating == 4).Count(),
+                    star5 = comments.Where(x => x.Rating == 5).Sum(x => x.Rating) / comments.Where(x => x.Rating == 5).Count(),
+                };
+
+                await _tourismLocationRepository.UpdateRating(place.Id, rating);
+            }
         }
     }
 }

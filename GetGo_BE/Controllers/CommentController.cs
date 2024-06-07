@@ -19,7 +19,7 @@ namespace GetGo_BE.Controllers
             _commentService = commentService;
         }
 
-        [HttpPost(ApiEndPointConstant.Comment.CommentsEndpoint)]
+        [HttpPost(ApiEndPointConstant.Comments.CommentsEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Create a comment")]
         public async Task<IActionResult> CreateComment(CreateCommentRequest request)
