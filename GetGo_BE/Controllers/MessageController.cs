@@ -1,15 +1,19 @@
 ﻿using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.Message;
+using GetGo.Domain.Payload.Response.Messages;
 using GetGo_BE.Constants;
 using GetGo_BE.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson.IO;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Text;
 
 namespace GetGo_BE.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class MessageController : BaseController<MessageController>
     {
@@ -46,6 +50,36 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
+        [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
+        [ProducesResponseType(typeof(List<Message>), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get location suggestion from ai")]
+        public async Task<IActionResult> AIChat(string question, string userId)
+        {
+            try
+            {
+                var result = new LocationSuggestionMessageResponse();
+                using (var httpClient = new HttpClient())
+                {
+                    AIChatRequest aIChatRequest = new AIChatRequest(question);
+                    aIChatRequest.history.Add(new HistoryRequest("test", ""));
+                    var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(aIChatRequest), Encoding.UTF8, "application/json");
 
+                    using (var response = await httpClient.PostAsync("http://127.0.0.1:8000/agents/chat-agent", content))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseContent = await response.Content.ReadAsStringAsync();
+                            result = Newtonsoft.Json.JsonConvert.DeserializeObject<LocationSuggestionMessageResponse>(responseContent);
+                        }
+                    }
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

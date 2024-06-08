@@ -22,7 +22,7 @@ namespace GetGo_BE.Services.Implements
             await _commentRepository.CreateComment(request);
         }
 
-        public async Task<List<Comment>> GetLocationComment(string locationId)
+        public async Task<List<Comment>> GetLocationComment(int locationId)
         {
             List<Comment> comments = await _commentRepository.GetLocationComment(locationId);
             return comments;

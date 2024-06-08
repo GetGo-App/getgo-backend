@@ -20,7 +20,7 @@ namespace GetGo.Repository.Implements
             _comments = _database.GetCollection<Comment>("Comment");
         }
 
-        public async Task<List<Comment>> GetLocationComment(string locationId)
+        public async Task<List<Comment>> GetLocationComment(int locationId)
         {
             return await _comments.Find(c => c.Location ==  locationId).ToListAsync();
         }

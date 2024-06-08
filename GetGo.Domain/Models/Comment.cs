@@ -18,9 +18,9 @@ namespace GetGo.Domain.Models
         public float Rating { get; set; }
         public string UserId { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string Location {  get; set; }
+        public int Location {  get; set; }
 
-        public Comment(string content, List<string> images, float rating, string userId, string location)
+        public Comment(string content, List<string> images, float rating, string userId, int location)
         {
             Id = ObjectId.GenerateNewId().ToString();
             Content = content;

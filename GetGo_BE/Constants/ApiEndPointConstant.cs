@@ -41,6 +41,7 @@
         {
             public const string LocationsEndpoint = ApiEndpoint + "/locations";
             public const string LocationsRatingEndpoint = LocationsEndpoint + "/ratings";
+            public const string LocationsSuggestionEndpoint = LocationsEndpoint + "/suggestions";
             public const string SearchLocationsEndpoint = ApiEndpoint + "/locations/searching";
             public const string LocationEndpoint = ApiEndpoint + "/locations/{id}";
             public const string TrendLocationEndpoint = ApiEndpoint + "/locations/trend";

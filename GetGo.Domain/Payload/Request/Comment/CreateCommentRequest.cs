@@ -12,6 +12,6 @@ namespace GetGo.Domain.Payload.Request.Comment
         public List<string> Images { get; set; }
         public float Rating { get; set; }
         public string UserId { get; set; }
-        public string Location { get; set; }
+        public int Location { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GetGo.Domain.Models;
+using GetGo.Domain.Models.Documents;
 using GetGo.Repository.Interfaces;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -25,7 +26,7 @@ namespace GetGo.Repository.Implements
             return await _tourismLocations.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task<Location> GetTourismLocationById(string id)
+        public async Task<Location> GetTourismLocationById(int id)
         {
             return await _tourismLocations.Find(tl => tl.Id == id).FirstOrDefaultAsync();
         }
@@ -46,7 +47,7 @@ namespace GetGo.Repository.Implements
                                                       tl.Address.Contains(searchValue)).ToListAsync();
         }
 
-        public async Task UpdateRating(string id, Rating rating)
+        public async Task UpdateRating(int id, Rating rating)
         {
             Location location = await _tourismLocations.Find(tl => tl.Id == id).FirstOrDefaultAsync();
             location.Rating = rating;

@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace GetGo_BE.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class LocationController : BaseController<LocationController>
     {
@@ -32,7 +32,7 @@ namespace GetGo_BE.Controllers
         [HttpGet(ApiEndPointConstant.Locations.LocationEndpoint)]
         [ProducesResponseType(typeof(Location), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location by id")]
-        public async Task<IActionResult> GetLocationById(string id)
+        public async Task<IActionResult> GetLocationById(int id)
         {
             var result = await _locationService.GetTourismLocationById(id);
             return Ok(result);
@@ -59,7 +59,7 @@ namespace GetGo_BE.Controllers
         [HttpGet(ApiEndPointConstant.Locations.LocationCommentEndpoint)]
         [ProducesResponseType(typeof(List<Comment>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get comment list in location")]
-        public async Task<IActionResult> GetLocationComments(string id)
+        public async Task<IActionResult> GetLocationComments(int id)
         {
             var result = await _locationService.GetComment(id);
             return Ok(result);

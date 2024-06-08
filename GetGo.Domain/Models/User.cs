@@ -19,7 +19,7 @@ namespace GetGo.Domain.Models
         public string? Role { get; set; }
         public bool IsActive { get; set; }
         public List<string> Friends { get; set; }
-        public List<string> Favourites { get; set; }
+        public List<int> Favourites { get; set; }
         public string? ForgetPassCode { get; set; }
 
         public User(string id, string? userName, string? password, string? email)

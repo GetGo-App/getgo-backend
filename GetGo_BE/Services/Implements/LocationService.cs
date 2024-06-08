@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GetGo.Domain.Models;
+using GetGo.Domain.Models.Documents;
 using GetGo.Domain.Payload.Response.Locations;
 using GetGo.Repository.Interfaces;
 using GetGo_BE.Services.Interfaces;
@@ -25,7 +26,7 @@ namespace GetGo_BE.Services.Implements
             return await _tourismLocationRepository.GetTopYearLocations();
         }
 
-        public async Task<Location> GetTourismLocationById(string id)
+        public async Task<Location> GetTourismLocationById(int id)
         {
             //List<Comment> comments = await _commentRepository.GetLocationComment(id);
             Location location = await _tourismLocationRepository.GetTourismLocationById(id);
@@ -43,7 +44,7 @@ namespace GetGo_BE.Services.Implements
             return await _tourismLocationRepository.GetTrendLocations();
         }
 
-        public async Task<List<Comment>> GetComment(string id)
+        public async Task<List<Comment>> GetComment(int id)
         {
             return await _commentRepository.GetLocationComment(id);
         }

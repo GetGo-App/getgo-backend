@@ -1,4 +1,5 @@
 ﻿using GetGo.Domain.Models;
+using GetGo.Domain.Models.Documents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace GetGo.Repository.Interfaces
     public interface ILocationRepository
     {
         public Task<List<Location>> GetTourismLocationList();
-        public Task<Location> GetTourismLocationById(string id);
+        public Task<Location> GetTourismLocationById(int id);
         public Task<List<Location>> GetTrendLocations();
         public Task<List<Location>> GetTopYearLocations();
         public Task<List<Location>> SearchLocation(string searchValue);
-        public Task UpdateRating(string id, Rating rating);
+        public Task UpdateRating(int id, Rating rating);
     }
 }

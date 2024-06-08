@@ -10,7 +10,7 @@ namespace GetGo.Repository.Interfaces
 {
     public interface ICommentRepository
     {
-        public Task<List<Comment>> GetLocationComment(string locationId);
+        public Task<List<Comment>> GetLocationComment(int locationId);
         public Task CreateComment(CreateCommentRequest request);
     }
 }

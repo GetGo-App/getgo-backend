@@ -5,7 +5,7 @@ namespace GetGo_BE.Services.Interfaces
 {
     public interface ICommentService
     {
-        public Task<List<Comment>> GetLocationComment(string locationId);
+        public Task<List<Comment>> GetLocationComment(int locationId);
         public Task CreateComment(CreateCommentRequest request);
     }
 }

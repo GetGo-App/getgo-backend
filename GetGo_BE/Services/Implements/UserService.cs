@@ -69,7 +69,7 @@ namespace GetGo_BE.Services.Implements
 
             if (user.Favourites == null) return null;
 
-            foreach (string locationId in user.Favourites)
+            foreach (int locationId in user.Favourites)
             {
                 favLocations.Add(await _locationRepository.GetTourismLocationById(locationId));
             }
