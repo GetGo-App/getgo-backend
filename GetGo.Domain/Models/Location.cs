@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace GetGo.Domain.Models
 {
+    [BsonIgnoreExtraElements]
     public class Location
     {
         [BsonId]
@@ -17,8 +18,7 @@ namespace GetGo.Domain.Models
         public string _id { get; set; } = null!;
         public int Id { get; set; }
         public string Name { get; set; }
-        [JsonPropertyName("Content")]
-        public string ShortDescription { get; set; }
+        public string Content { get; set; }
         public string? Address { get; set; }
         public string? City {  get; set; }
         public float Latitude { get; set; }
@@ -30,7 +30,7 @@ namespace GetGo.Domain.Models
         public string? Hotline { get; set; }
         public string Price { get; set; }
         public Rating Rating { get; set; }
-        public Rating WebSiteRating { get; set; }
+        public Rating WebsiteRating { get; set; }
         public float WebsiteRatingOverall { get; set; }
         public bool IsTrend {  get; set; }
         public bool IsTopYear { get; set; }
