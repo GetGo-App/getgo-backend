@@ -10,11 +10,11 @@ namespace GetGo_BE.Services.Interfaces
         public Task<List<User>> GetUserList();
         public Task<User> GetUserById(string id);
         public Task<User> GetUserByUsername(string username);
-        public Task UpdateUser(string id,UpdateUserRequest request);
+        public Task UpdateUser(string username, UpdateUserRequest request);
         public Task DeleteUser(string id);
-        public Task<List<Location>> GetFavLocation(string id);
-        public Task<List<Image>> GetFriendImage(string id);
-        public Task<List<Status>> GetFriendStatus(string id);
+        public Task<List<Location>> GetFavLocation(string username);
+        public Task<List<Image>> GetFriendImage(string username);
+        public Task<List<Status>> GetFriendStatus(string username);
 
         public Task SendOtpCode(string emailOrPhone);
         public Task ResetPassword(string newPass, string otpcode);

@@ -40,9 +40,9 @@ namespace GetGo.Repository.Implements
             return await _users.Find(u => u.UserName.Equals(username)).FirstOrDefaultAsync();
         }
 
-        public async Task UpdateUser(string id, UpdateUserRequest request)
+        public async Task UpdateUser(string username, UpdateUserRequest request)
         {
-            User user = await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
+            User user = await _users.Find(u => u.UserName.Equals(username)).FirstOrDefaultAsync();
 
             //Change data
             user.UserName = String.IsNullOrEmpty(request.UserName) ? user.UserName : request.UserName;
@@ -52,7 +52,7 @@ namespace GetGo.Repository.Implements
             user.PhoneNumber = String.IsNullOrEmpty(request.PhoneNumber) ? user.PhoneNumber : request.PhoneNumber;
             user.Avatar = String.IsNullOrEmpty(request.Avatar) ? user.Avatar : request.Avatar;
 
-            await _users.ReplaceOneAsync(u => u.Id == id, user);
+            await _users.ReplaceOneAsync(u => u.UserName.Equals(username), user);
         }
 
         public async Task DeleteUser(string id)

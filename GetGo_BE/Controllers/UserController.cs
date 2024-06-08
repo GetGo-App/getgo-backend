@@ -40,12 +40,12 @@ namespace GetGo_BE.Controllers
         }
 
         [Authorize]
-        [HttpPatch(ApiEndPointConstant.User.UserEndpoint)]
+        [HttpPatch(ApiEndPointConstant.User.UserUserNameEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Update user information")]
-        public async Task<IActionResult> UpdateUserInfo(string id, UpdateUserRequest request)
+        public async Task<IActionResult> UpdateUserInfo(string username, UpdateUserRequest request)
         {
-            await _userService.UpdateUser(id, request);
+            await _userService.UpdateUser(username, request);
             return Ok("Action success");
         }
 
@@ -53,9 +53,9 @@ namespace GetGo_BE.Controllers
         [HttpGet(ApiEndPointConstant.User.UserFavLocationEndpoint)]
         [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get user favourite locations")]
-        public async Task<IActionResult> GetFavLocation(string id)
+        public async Task<IActionResult> GetFavLocation(string username)
         {
-            var result = await _userService.GetFavLocation(id);
+            var result = await _userService.GetFavLocation(username);
 
             return Ok(result);
         }
@@ -64,9 +64,9 @@ namespace GetGo_BE.Controllers
         [HttpGet(ApiEndPointConstant.User.UserFriendImagesEndpoint)]
         [ProducesResponseType(typeof(List<Image>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get user friends' images")]
-        public async Task<IActionResult> GetFriendImages(string id)
+        public async Task<IActionResult> GetFriendImages(string username)
         {
-            var result = await _userService.GetFriendImage(id);
+            var result = await _userService.GetFriendImage(username);
 
             return Ok(result);
         }
@@ -75,13 +75,15 @@ namespace GetGo_BE.Controllers
         [HttpGet(ApiEndPointConstant.User.UserFriendStatusesEndpoint)]
         [ProducesResponseType(typeof(List<Status>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get user friends' status")]
-        public async Task<IActionResult> GetFriendStatus(string id)
+        public async Task<IActionResult> GetFriendStatus(string username)
         {
-            var result = await _userService.GetFriendStatus(id);
+            var result = await _userService.GetFriendStatus(username);
 
             return Ok(result);
         }
 
+
+        #region ResetPassword
         [HttpPost(ApiEndPointConstant.User.UserForgetPassEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         public async Task<IActionResult> SendOtpCode(string emailOrPhoneNumber)
@@ -97,5 +99,6 @@ namespace GetGo_BE.Controllers
             await _userService.ResetPassword(newPassword, otpCode);
             return Ok("Action success");
         }
+        #endregion
     }
 }

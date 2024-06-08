@@ -61,14 +61,14 @@ namespace GetGo_BE.Services.Implements
             return await _userRepository.SignUp(request);
         }
 
-        public async Task UpdateUser(string id, UpdateUserRequest request)
+        public async Task UpdateUser(string username, UpdateUserRequest request)
         {
-            await _userRepository.UpdateUser(id, request);
+            await _userRepository.UpdateUser(username, request);
         }
 
-        public async Task<List<Location>> GetFavLocation(string id)
+        public async Task<List<Location>> GetFavLocation(string username)
         {
-            User user = await _userRepository.GetUserById(id);
+            User user = await _userRepository.GetUserByUsername(username);
 
             List<Location> favLocations = new List<Location>();
 
@@ -82,9 +82,9 @@ namespace GetGo_BE.Services.Implements
             return favLocations;
         }
 
-        public async Task<List<Image>> GetFriendImage(string id)
+        public async Task<List<Image>> GetFriendImage(string username)
         {
-            User user = await _userRepository.GetUserById(id);
+            User user = await _userRepository.GetUserByUsername(username);
 
             List<Image> friendsImage = new List<Image>();
 
@@ -102,9 +102,9 @@ namespace GetGo_BE.Services.Implements
             return friendsImage;
         }
 
-        public async Task<List<Status>> GetFriendStatus(string id)
+        public async Task<List<Status>> GetFriendStatus(string username)
         {
-            User user = await _userRepository.GetUserById(id);
+            User user = await _userRepository.GetUserByUsername(username);
 
             List<Status> friendsStatus = new List<Status>();
 
@@ -122,6 +122,7 @@ namespace GetGo_BE.Services.Implements
             return friendsStatus;
         }
 
+        #region ResetPassword
         public async Task ResetPassword(string newPass, string otpcode)
         {
             if (String.IsNullOrEmpty(newPass)) throw new BadHttpRequestException("Password cannot empty");
@@ -203,5 +204,6 @@ namespace GetGo_BE.Services.Implements
                 sr.Close();
             }
         }
+        #endregion
     }
 }

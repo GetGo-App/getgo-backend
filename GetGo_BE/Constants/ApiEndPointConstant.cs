@@ -75,12 +75,13 @@
         public static class User
         {
             public const string UsersEndpoint = ApiEndpoint + "/users";
+            public const string UserUserNameEndpoint = UsersEndpoint + "/{username}";
             public const string UserForgetPassEndpoint = ApiEndpoint + "/users/password-forget";
+            public const string UserFavLocationEndpoint = UserUserNameEndpoint + "/fav-locations";
+            public const string UserFriendImagesEndpoint = UserUserNameEndpoint + "/images";
+            public const string UserFriendStatusesEndpoint = UserUserNameEndpoint + "/status";
+
             public const string UserEndpoint = ApiEndpoint + "/users/{id}";
-            public const string UserFavLocationEndpoint = UserEndpoint + "/fav-locations";
-            public const string UserFriendImagesEndpoint = UserEndpoint + "/images";
-            public const string UserFriendStatusesEndpoint = UserEndpoint + "/status";
-            public const string UserUserNameEndpoint = UserEndpoint + "/username";
         }
     }
 }
