@@ -9,6 +9,12 @@ namespace GetGo.Domain.Payload.Request.Route
     public class CreateMapRequest
     {
         public string UserId { get; set; }
-        public List<string> Locations { get; set; }
+        public List<int> Locations { get; set; }
+
+        public CreateMapRequest(string userId, List<int> locations)
+        {
+            UserId = userId;
+            Locations = locations;
+        }
     }
 }

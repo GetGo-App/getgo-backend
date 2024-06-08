@@ -1,5 +1,6 @@
 ﻿using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.Message;
+using GetGo.Domain.Payload.Request.Route;
 using GetGo.Domain.Payload.Response.Messages;
 using GetGo_BE.Constants;
 using GetGo_BE.Services.Interfaces;
@@ -18,9 +19,11 @@ namespace GetGo_BE.Controllers
     public class MessageController : BaseController<MessageController>
     {
         private readonly IMessageService _messageService;
-        public MessageController(ILogger<MessageController> logger, IMessageService messageService) : base(logger)
+        private readonly IMapService _mapService;
+        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService) : base(logger)
         {
             _messageService = messageService;
+            _mapService = mapService;
         }
 
         [HttpPost(ApiEndPointConstant.Message.MessagesEndpoint)]
@@ -51,7 +54,7 @@ namespace GetGo_BE.Controllers
         }
 
         [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
-        [ProducesResponseType(typeof(List<Message>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location suggestion from ai")]
         public async Task<IActionResult> AIChat(string question, string userId)
         {
@@ -74,7 +77,10 @@ namespace GetGo_BE.Controllers
                     }
                 }
 
-                return Ok(result);
+                //Add new Map
+                await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
+
+                return Ok("Action Success");
             }
             catch (Exception ex)
             {
