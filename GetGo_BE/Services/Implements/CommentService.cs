@@ -25,8 +25,6 @@ namespace GetGo_BE.Services.Implements
         public async Task<List<Comment>> GetLocationComment(string locationId)
         {
             List<Comment> comments = await _commentRepository.GetLocationComment(locationId);
-            var avgRating = comments.Sum(c => c.Rating)/comments.Count();
-            await _locationRepository.UpdateRating(locationId, avgRating);
             return comments;
         }
     }
