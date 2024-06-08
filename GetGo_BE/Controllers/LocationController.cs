@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace GetGo_BE.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class LocationController : BaseController<LocationController>
     {

@@ -47,7 +47,7 @@ namespace GetGo_BE.Controllers
                 return BadRequest(new ErrorResponse()
                 {
                     StatusCode = StatusCodes.Status400BadRequest,
-                    Error = MessageConstant.Authentication.AlreadyUsedEmail,
+                    Error = MessageConstant.Authentication.AlreadyUsedEmailOrUsername,
                     TimeStamp = DateTime.Now
                 });
             }

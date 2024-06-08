@@ -14,7 +14,7 @@ using System.Text;
 
 namespace GetGo_BE.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class MessageController : BaseController<MessageController>
     {

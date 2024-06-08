@@ -6,7 +6,7 @@
         {
             public const string InvalidEmailOrPassword = "Invalid Email or Password";
 
-            public const string AlreadyUsedEmail = "Email has been already used";
+            public const string AlreadyUsedEmailOrUsername = "Email or Username has been already used";
         }
     }
 }

@@ -9,6 +9,7 @@ namespace GetGo_BE.Services.Interfaces
     {
         public Task<List<User>> GetUserList();
         public Task<User> GetUserById(string id);
+        public Task<User> GetUserByUsername(string username);
         public Task UpdateUser(string id,UpdateUserRequest request);
         public Task DeleteUser(string id);
         public Task<List<Location>> GetFavLocation(string id);

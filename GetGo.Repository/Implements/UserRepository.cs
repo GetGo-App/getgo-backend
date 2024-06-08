@@ -35,6 +35,11 @@ namespace GetGo.Repository.Implements
             return await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<User> GetUserByUsername(string username)
+        {
+            return await _users.Find(u => u.UserName.Equals(username)).FirstOrDefaultAsync();
+        }
+
         public async Task UpdateUser(string id, UpdateUserRequest request)
         {
             User user = await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
@@ -70,7 +75,7 @@ namespace GetGo.Repository.Implements
 
         public async Task<AuthenticationResponse> SignUp(SignUpRequest request)
         {
-            User user = await _users.Find(u => u.Email.Equals(request.Email)).FirstOrDefaultAsync();
+            User user = await _users.Find(u => u.Email.Equals(request.Email) || u.UserName.Equals(request.UserName)).FirstOrDefaultAsync();
             if (user != null) return null;
 
             User newUser = new User

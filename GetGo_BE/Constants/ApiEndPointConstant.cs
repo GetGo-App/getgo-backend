@@ -80,6 +80,7 @@
             public const string UserFavLocationEndpoint = UserEndpoint + "/fav-locations";
             public const string UserFriendImagesEndpoint = UserEndpoint + "/images";
             public const string UserFriendStatusesEndpoint = UserEndpoint + "/status";
+            public const string UserUserNameEndpoint = UserEndpoint + "/username";
         }
     }
 }

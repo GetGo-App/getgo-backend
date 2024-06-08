@@ -41,6 +41,11 @@ namespace GetGo_BE.Services.Implements
             return await _userRepository.GetUserById(id);
         }
 
+        public async Task<User> GetUserByUsername(string username)
+        {
+            return await _userRepository.GetUserByUsername(username);
+        }
+
         public async Task<List<User>> GetUserList()
         {
             return await _userRepository.GetUserList();

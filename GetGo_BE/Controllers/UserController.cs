@@ -30,12 +30,12 @@ namespace GetGo_BE.Controllers
         }
 
         [Authorize]
-        [HttpGet(ApiEndPointConstant.User.UserEndpoint)]
+        [HttpGet(ApiEndPointConstant.User.UserUserNameEndpoint)]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
-        [SwaggerOperation(Summary = "Get user info by id")]
-        public async Task<IActionResult> GetUserById(string id)
+        [SwaggerOperation(Summary = "Get user info by username")]
+        public async Task<IActionResult> GetUserById(string username)
         {
-            var result = await _userService.GetUserById(id);
+            var result = await _userService.GetUserByUsername(username);
             return Ok(result);
         }
 
