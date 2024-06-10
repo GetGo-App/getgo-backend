@@ -54,7 +54,7 @@ namespace GetGo_BE.Controllers
         }
 
         [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(LocationSuggestionMessageResponse), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location suggestion from ai")]
         public async Task<IActionResult> AIChat(string question, string userId)
         {
@@ -80,7 +80,7 @@ namespace GetGo_BE.Controllers
                 //Add new Map
                 await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
 
-                return Ok("Action Success");
+                return Ok(result);
             }
             catch (Exception ex)
             {
