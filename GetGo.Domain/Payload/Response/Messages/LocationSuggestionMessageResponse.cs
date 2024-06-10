@@ -8,6 +8,7 @@ namespace GetGo.Domain.Payload.Response.Messages
 {
     public class LocationSuggestionMessageResponse
     {
-        public List<int> ids_location {  get; set; }
+        public List<int>? ids_location {  get; set; }
+        public string? message {  get; set; }
     }
 }

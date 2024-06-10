@@ -91,7 +91,7 @@ namespace GetGo_BE.Controllers
                 //Add AI message to message history
 
                 //Add new Map
-                await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
+                //await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
 
                 return Ok(result);
             }
