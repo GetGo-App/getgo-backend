@@ -30,7 +30,7 @@ namespace GetGo_BE.Controllers
         [HttpPost(ApiEndPointConstant.Message.MessagesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Create message")]
-        public async Task<IActionResult> CreateMessage([FromBody]CreateMessageRequest request)
+        public async Task<IActionResult> CreateMessage([FromBody] CreateMessageRequest request)
         {
             await _messageService.CreateMessage(request);
             return Ok("Action success");
@@ -48,7 +48,7 @@ namespace GetGo_BE.Controllers
         [HttpPost(ApiEndPointConstant.Message.DialogMessagesEndpoint)]
         [ProducesResponseType(typeof(List<Message>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get message history list")]
-        public async Task<IActionResult> GetDialogMessage([FromBody]GetDialogMessageRequest request)
+        public async Task<IActionResult> GetDialogMessage([FromBody] GetDialogMessageRequest request)
         {
             var result = await _messageService.GetUserMessageHistory(request);
             return Ok(result);
@@ -91,7 +91,10 @@ namespace GetGo_BE.Controllers
                 //Add AI message to message history
 
                 //Add new Map
-                //await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
+                if (result.ids_location != null)
+                {
+                    await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
+                }
 
                 return Ok(result);
             }
