@@ -72,5 +72,10 @@ namespace GetGo_BE.Services.Implements
                 await _tourismLocationRepository.UpdateRating(place.Id, rating);
             }
         }
+
+        public async Task<List<Location>> GetCityLocation(string city)
+        {
+            return await _tourismLocationRepository.GetCityLocation(city);
+        }
     }
 }

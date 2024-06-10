@@ -82,5 +82,14 @@ namespace GetGo_BE.Controllers
             await _locationService.UpdateRatings();
             return Ok("Action success");
         }
+
+        [HttpGet(ApiEndPointConstant.Locations.CityLocationEndpoint)]
+        [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get location in specific city")]
+        public async Task<IActionResult> GetLocationInCity(string city)
+        {
+            var result = await _locationService.GetCityLocation(city);
+            return Ok(result);
+        }
     }
 }

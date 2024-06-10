@@ -53,5 +53,10 @@ namespace GetGo.Repository.Implements
             location.Rating = rating;
             await _tourismLocations.ReplaceOneAsync(tl => tl.Id == id, location);
         }
+
+        public async Task<List<Location>> GetCityLocation(string city)
+        {
+            return await _tourismLocations.Find(tl => tl.City.Equals(city)).ToListAsync();
+        }
     }
 }

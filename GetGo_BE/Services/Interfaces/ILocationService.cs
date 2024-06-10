@@ -12,5 +12,7 @@ namespace GetGo_BE.Services.Interfaces
         public Task<List<Comment>> GetComment(int id);
         public Task<List<Location>> SearchLocation(string searchValue);
         public Task UpdateRatings();
+
+        public Task<List<Location>> GetCityLocation(string city);
     }
 }

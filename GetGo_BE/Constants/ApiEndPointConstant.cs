@@ -47,6 +47,8 @@
             public const string TrendLocationEndpoint = ApiEndpoint + "/locations/trend";
             public const string TopYearLocationEndpoint = ApiEndpoint + "/locations/top-year";
             public const string LocationCommentEndpoint = LocationEndpoint + "/comments";
+
+            public const string CityLocationEndpoint = ApiEndpoint + "/{city}/locations";
         }
 
         public static class Map
