@@ -51,6 +51,7 @@ namespace GetGo.Repository.Implements
             user.Email = String.IsNullOrEmpty(request.Email) ? user.Email : request.Email;
             user.PhoneNumber = String.IsNullOrEmpty(request.PhoneNumber) ? user.PhoneNumber : request.PhoneNumber;
             user.Avatar = String.IsNullOrEmpty(request.Avatar) ? user.Avatar : request.Avatar;
+            user.Birthday = request.Birthday;
 
             await _users.ReplaceOneAsync(u => u.UserName.Equals(username), user);
         }
