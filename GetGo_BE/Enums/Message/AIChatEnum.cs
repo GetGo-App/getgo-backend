@@ -1,4 +1,4 @@
-﻿namespace GetGo_BE.Constants
+﻿namespace GetGo_BE.Enums.Message
 {
     public enum AIChatEnum
     {

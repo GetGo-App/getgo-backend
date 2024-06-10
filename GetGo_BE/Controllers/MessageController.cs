@@ -3,6 +3,7 @@ using GetGo.Domain.Payload.Request.Message;
 using GetGo.Domain.Payload.Request.Route;
 using GetGo.Domain.Payload.Response.Messages;
 using GetGo_BE.Constants;
+using GetGo_BE.Enums.Message;
 using GetGo_BE.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -53,6 +54,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
         [ProducesResponseType(typeof(LocationSuggestionMessageResponse), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location suggestion from ai")]
@@ -60,6 +62,15 @@ namespace GetGo_BE.Controllers
         {
             try
             {
+                //Add user message to message history
+                await _messageService.CreateMessage(new CreateMessageRequest()
+                {
+                    User1 = userId,
+                    User2 = AIChatEnum.CHATAGENT.ToString(),
+                    Content = question,
+                    Timestamp = DateTime.UtcNow
+                });
+
                 var result = new LocationSuggestionMessageResponse();
                 using (var httpClient = new HttpClient())
                 {
@@ -76,6 +87,8 @@ namespace GetGo_BE.Controllers
                         }
                     }
                 }
+
+                //Add AI message to message history
 
                 //Add new Map
                 await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
