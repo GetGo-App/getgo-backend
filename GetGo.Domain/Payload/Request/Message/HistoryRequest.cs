@@ -8,10 +8,10 @@ namespace GetGo.Domain.Payload.Request.Message
 {
     public class HistoryRequest
     {
-        public string question {  get; set; }
-        public string answer { get; set; }
+        public string? question {  get; set; }
+        public string? answer { get; set; }
 
-        public HistoryRequest(string question, string answer)
+        public HistoryRequest(string? question, string? answer)
         {
             this.question = question;
             this.answer = answer;

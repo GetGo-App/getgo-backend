@@ -54,7 +54,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
         [ProducesResponseType(typeof(LocationSuggestionMessageResponse), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location suggestion from ai")]
@@ -89,6 +89,17 @@ namespace GetGo_BE.Controllers
                 }
 
                 //Add AI message to message history
+                if(result.text != null)
+                {
+                    await _messageService.CreateMessage(new CreateMessageRequest()
+                    {
+                        User2 = userId,
+                        User1 = AIChatEnum.CHATAGENT.ToString(),
+                        Content = result.text,
+                        Timestamp = DateTime.UtcNow
+                    });
+                }
+
 
                 //Add new Map
                 if (result.ids_location != null)
