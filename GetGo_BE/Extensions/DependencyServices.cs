@@ -27,6 +27,7 @@ namespace GetGo_BE.Extensions
             services.AddScoped<IMapService, MapService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IStatusService, StatusService>();
+            services.AddScoped<IAIMessageHistoryService, AIMessageHistoryService>();
             #endregion
 
             #region Repository Scope
@@ -39,6 +40,7 @@ namespace GetGo_BE.Extensions
             services.AddScoped<IMapRepository, MapRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IStatusRepository, StatusRepoitory>();
+            services.AddScoped<IAIMessageHistoryRepository, AIMessageHistoryRepository>();
             #endregion
 
             return services;

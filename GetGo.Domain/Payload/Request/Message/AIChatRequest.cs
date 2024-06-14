@@ -22,5 +22,16 @@ namespace GetGo.Domain.Payload.Request.Message
             this.question = question;
             this.history = new List<HistoryRequest>();
         }
+
+        public AIChatRequest(List<HistoryRequest>? history)
+        {
+            this.question = String.Empty;
+            this.history = history;
+        }
+
+        public AIChatRequest()
+        {
+            this.history = new List<HistoryRequest>();
+        }
     }
 }

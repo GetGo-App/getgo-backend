@@ -21,10 +21,13 @@ namespace GetGo_BE.Controllers
     {
         private readonly IMessageService _messageService;
         private readonly IMapService _mapService;
-        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService) : base(logger)
+        private readonly IAIMessageHistoryService _aiMessageHistoryService;
+
+        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService, IAIMessageHistoryService aiMessageHistoryService) : base(logger)
         {
             _messageService = messageService;
             _mapService = mapService;
+            _aiMessageHistoryService = aiMessageHistoryService;
         }
 
         [HttpPost(ApiEndPointConstant.Message.MessagesEndpoint)]
@@ -54,7 +57,6 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        //[AllowAnonymous]
         [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
         [ProducesResponseType(typeof(LocationSuggestionMessageResponse), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get location suggestion from ai")]
@@ -62,21 +64,21 @@ namespace GetGo_BE.Controllers
         {
             try
             {
-                //Add user message to message history
-                await _messageService.CreateMessage(new CreateMessageRequest()
-                {
-                    User1 = userId,
-                    User2 = AIChatEnum.CHATAGENT.ToString(),
-                    Content = question,
-                    Timestamp = DateTime.UtcNow
-                });
+                //Create MessageHistory
+                AIMessageHistory message = new AIMessageHistory(userId, AIChatEnum.CHATAGENT.ToString(), DateTime.Now, question);
 
                 var result = new LocationSuggestionMessageResponse();
                 using (var httpClient = new HttpClient())
                 {
-                    AIChatRequest aIChatRequest = new AIChatRequest(question);
-                    aIChatRequest.history.Add(new HistoryRequest("test", ""));
-                    var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(aIChatRequest), Encoding.UTF8, "application/json");
+                    //Initialize chat history and question
+                    AIChatRequest request = await _aiMessageHistoryService.GetAIChatHistory(new GetDialogMessageRequest()
+                    {
+                        User1 = userId,
+                        User2 = AIChatEnum.CHATAGENT.ToString()
+                    });
+                    request.question = question;
+
+                    var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                     using (var response = await httpClient.PostAsync("http://127.0.0.1:8000/agents/chat-agent", content))
                     {
@@ -91,21 +93,17 @@ namespace GetGo_BE.Controllers
                 //Add AI message to message history
                 if(result.text != null)
                 {
-                    await _messageService.CreateMessage(new CreateMessageRequest()
-                    {
-                        User2 = userId,
-                        User1 = AIChatEnum.CHATAGENT.ToString(),
-                        Content = result.text,
-                        Timestamp = DateTime.UtcNow
-                    });
+                    message.Answer = result.text;
                 }
-
 
                 //Add new Map
                 if (result.ids_location != null)
                 {
                     await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
                 }
+
+                //Create message history
+                await _aiMessageHistoryService.CreateAIMessageHistory(message);
 
                 return Ok(result);
             }
