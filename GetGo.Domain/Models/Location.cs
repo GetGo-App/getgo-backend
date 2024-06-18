@@ -21,8 +21,9 @@ namespace GetGo.Domain.Models
         public string Content { get; set; }
         public string? Address { get; set; }
         public string? City {  get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public string? ShortDescription {  get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public List<string> Images { get; set; }
         public bool IsAvailable { get; set; }
         public string? OpenTime { get; set; }

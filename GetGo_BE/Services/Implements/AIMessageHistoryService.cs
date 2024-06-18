@@ -22,16 +22,9 @@ namespace GetGo_BE.Services.Implements
 
         public async Task<AIChatRequest> GetAIChatHistory(GetDialogMessageRequest request)
         {
-            List<AIMessageHistory> history = await _aIMessageHistoryRepository.GetAIChatHistory(request);
+            List<HistoryRequest> history = await _aIMessageHistoryRepository.GetAIChatHistory(request);
 
-            List<HistoryRequest> historyList = new List<HistoryRequest>();
-
-            foreach(AIMessageHistory message in history)
-            {
-                historyList.Add(new HistoryRequest(message.Question, message.Answer));
-            }
-
-            return new AIChatRequest(historyList);
+            return new AIChatRequest(history);
         }
     }
 }

@@ -21,10 +21,12 @@ namespace GetGo.Repository.Implements
             _messageHistory = _database.GetCollection<AIMessageHistory>("AIMessageHistory");
         }
 
-        public async Task<List<AIMessageHistory>> GetAIChatHistory(GetDialogMessageRequest request)
+        public async Task<List<HistoryRequest>> GetAIChatHistory(GetDialogMessageRequest request)
         {
             return await _messageHistory.Find(x => x.User1.Equals(request.User1) && x.User2.Equals(request.User2))
-                                 .SortByDescending(x => x.Timestamp).Limit(3).ToListAsync();
+                                 .SortByDescending(x => x.Timestamp).Limit(3)
+                                 .Project(x => new HistoryRequest(x.Question, x.Answer))
+                                 .ToListAsync();
         }
 
         public async Task CreateAIMessageHistory(AIMessageHistory message) 
