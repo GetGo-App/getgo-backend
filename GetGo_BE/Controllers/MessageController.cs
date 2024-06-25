@@ -80,7 +80,8 @@ namespace GetGo_BE.Controllers
 
                     var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
-                    using (var response = await httpClient.PostAsync("http://127.0.0.1:8000/agents/chat-agent", content))
+                    httpClient.DefaultRequestHeaders.Add("X-API-Key", "ZjFkOTk2MDQtOTUwMi00OTk3LWE4MWEtODc2N2E2MTc1YjM5");
+                    using (var response = await httpClient.PostAsync("https://pphuc25-getgo-ai.hf.space/agents/chat-agent", content))
                     {
                         if (response.IsSuccessStatusCode)
                         {
