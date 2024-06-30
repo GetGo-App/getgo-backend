@@ -1,7 +1,9 @@
 ﻿using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.Status;
 using GetGo.Repository.Interfaces;
+using GetGo_BE.Enums.Image;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,10 @@ namespace GetGo.Repository.Implements
         {
             _status = _database.GetCollection<Status>("Status");
         }
+        public async Task<List<Status>> GetAllStatus()
+        {
+            return await _status.Find(new BsonDocument()).ToListAsync();
+        }
 
         public async Task CreateStatus(CreateStatusRequest request)
         {
@@ -30,9 +36,14 @@ namespace GetGo.Repository.Implements
             return await _status.Find(s => s.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<Status> GetUserStatus(string userId)
+        public async Task<List<Status>> GetUserStatus(string userId)
         {
-            return await _status.Find(s => s.Uploader == userId).FirstOrDefaultAsync();
+            return await _status.Find(s => s.Uploader == userId ).ToListAsync();
+        }
+
+        public async Task<List<Status>> GetFriendStatus(string userId)
+        {
+            return await _status.Find(s => s.Uploader == userId && s.PrivacyMode.Equals(ImagePrivacyEnum.MySelf.ToString())).ToListAsync();
         }
 
         public async Task UpdateStatus(string id, UpdateStatusRequest request)

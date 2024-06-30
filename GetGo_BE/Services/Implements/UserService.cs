@@ -112,11 +112,8 @@ namespace GetGo_BE.Services.Implements
 
             foreach (string friend in user.Friends)
             {
-                Status status = await _statusRepository.GetUserStatus(friend);
-                if (!status.PrivacyMode.Equals(ImagePrivacyEnum.MySelf.ToString()))
-                {
-                    friendsStatus.Add(status);
-                }
+                List<Status> status = await _statusRepository.GetFriendStatus(friend);
+                friendsStatus.AddRange(status);
             }
 
             return friendsStatus;

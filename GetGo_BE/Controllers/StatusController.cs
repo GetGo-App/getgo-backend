@@ -20,6 +20,15 @@ namespace GetGo_BE.Controllers
             _statusService = statusService;
         }
 
+        [HttpGet(ApiEndPointConstant.Status.StatusesEndpoint)]
+        [ProducesResponseType(typeof(Status), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get all status")]
+        public async Task<IActionResult> GetAllStatus()
+        {
+            var result = await _statusService.GetAllStatus();
+            return Ok(result);
+        }
+
         [HttpPost(ApiEndPointConstant.Status.StatusesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Create status")]

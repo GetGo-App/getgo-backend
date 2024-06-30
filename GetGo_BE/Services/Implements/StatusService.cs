@@ -29,7 +29,7 @@ namespace GetGo_BE.Services.Implements
             return await _statusRepository.GetStatusById(id);
         }
 
-        public async Task<Status> GetUserStatus(string userId)
+        public async Task<List<Status>> GetUserStatus(string userId)
         {
             return await _statusRepository.GetUserStatus(userId);
         }
@@ -42,6 +42,11 @@ namespace GetGo_BE.Services.Implements
         public async Task UpdateReaction(string id, UpdateReactionRequest request)
         {
             await _statusRepository.UpdateReaction(id, request);
+        }
+
+        public async Task<List<Status>> GetAllStatus()
+        {
+            return await _statusRepository.GetAllStatus();
         }
     }
 }
