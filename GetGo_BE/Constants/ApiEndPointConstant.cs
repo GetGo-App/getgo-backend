@@ -83,7 +83,7 @@
             public const string UserFriendImagesEndpoint = UserUserNameEndpoint + "/images";
             public const string UserFriendStatusesEndpoint = UserUserNameEndpoint + "/status";
 
-            public const string UserEndpoint = ApiEndpoint + "/users/{id}";
+            public const string UserEndpoint = UsersEndpoint + "/{id}/info";
         }
     }
 }
