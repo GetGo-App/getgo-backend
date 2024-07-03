@@ -10,6 +10,7 @@ namespace GetGo_BE.Services.Interfaces
         public Task<List<User>> GetUserList();
         public Task<User> GetUserById(string id);
         public Task<User> GetUserByUsername(string username);
+        public Task ChangeUserPack(string id, string packName);
         public Task UpdateUser(string username, UpdateUserRequest request);
         public Task DeleteUser(string id);
         public Task<List<Location>> GetFavLocation(string username);

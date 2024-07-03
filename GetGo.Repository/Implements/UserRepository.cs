@@ -1,4 +1,5 @@
-﻿using GetGo.Domain.Models;
+﻿using GetGo.Domain.Enums.User;
+using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.User;
 using GetGo.Domain.Payload.Response.User;
 using GetGo.Repository.Interfaces;
@@ -54,6 +55,23 @@ namespace GetGo.Repository.Implements
             user.Birthday = request.Birthday;
 
             await _users.ReplaceOneAsync(u => u.UserName.Equals(username), user);
+        }
+
+        public async Task ChangeUserPack(string id, string packName)
+        {
+            User user = await _users.Find(u => u.Id.Equals(id)).FirstOrDefaultAsync();
+
+            //Change data
+            switch (packName)
+            {
+                case "Premium":
+                    user.Subscription = SubcriptionEnum.Premium.ToString(); break;
+                case "None":
+                    user.Subscription = SubcriptionEnum.None.ToString(); break;
+                default: throw new Exception($"There is no pack name {packName}");
+            }
+
+            await _users.ReplaceOneAsync(u => u.Id.Equals(id), user);
         }
 
         public async Task DeleteUser(string id)

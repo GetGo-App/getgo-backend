@@ -84,6 +84,7 @@
             public const string UserFriendStatusesEndpoint = UserUserNameEndpoint + "/status";
 
             public const string UserEndpoint = UsersEndpoint + "/{id}/info";
+            public const string UserPremiumEndpoint = UsersEndpoint + "/{id}/premium";
         }
     }
 }

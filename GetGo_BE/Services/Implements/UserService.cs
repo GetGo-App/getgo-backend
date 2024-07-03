@@ -119,6 +119,11 @@ namespace GetGo_BE.Services.Implements
             return friendsStatus;
         }
 
+        public async Task ChangeUserPack(string id, string packName)
+        {
+            await _userRepository.ChangeUserPack(id, packName);
+        }
+
         #region ResetPassword
         public async Task ResetPassword(string newPass, string otpcode)
         {

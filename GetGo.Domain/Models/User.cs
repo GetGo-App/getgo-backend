@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+using GetGo.Domain.Enums.User;
 
 namespace GetGo.Domain.Models
 {
@@ -22,6 +23,7 @@ namespace GetGo.Domain.Models
         public List<string> Friends { get; set; }
         public List<int> Favourites { get; set; }
         public string? ForgetPassCode { get; set; }
+        public string? Subscription {  get; set; }
 
         public User(string id, string? userName, string? password, string? email)
         {
@@ -31,6 +33,7 @@ namespace GetGo.Domain.Models
             Email = email;
             IsActive = true;
             Role = "Customer";
+            Subscription = SubcriptionEnum.None.ToString();
         }
     }
 }

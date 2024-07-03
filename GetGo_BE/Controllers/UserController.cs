@@ -5,6 +5,7 @@ using GetGo_BE.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace GetGo_BE.Controllers
@@ -92,6 +93,15 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
+        [Authorize]
+        [HttpPatch(ApiEndPointConstant.User.UserPremiumEndpoint)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Change user pack")]
+        public async Task<IActionResult> UpdateUserInfo(string id, string packName)
+        {
+            await _userService.ChangeUserPack(id, packName);
+            return Ok("Action success");
+        }
 
         #region ResetPassword
         [HttpPost(ApiEndPointConstant.User.UserForgetPassEndpoint)]

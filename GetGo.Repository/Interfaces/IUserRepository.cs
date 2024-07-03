@@ -15,6 +15,7 @@ namespace GetGo.Repository.Interfaces
         public Task<User> GetUserById(string id);
         public Task<User> GetUserByUsername(string username);
         public Task UpdateUser(string username, UpdateUserRequest request);
+        public Task ChangeUserPack(string id, string packName);
         public Task DeleteUser(string id);
 
         public Task<string> ValidateAndUpdateOtpCode(string emailOrPhone, string otpCode);
