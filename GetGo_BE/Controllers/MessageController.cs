@@ -113,5 +113,14 @@ namespace GetGo_BE.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
+        [ProducesResponseType(typeof(List<HistoryRequest>), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get ai message history list")]
+        public async Task<IActionResult> GetAIChatHistory(string userId)
+        {
+            var result = await _aiMessageHistoryService.GetAIChatHistory(userId);
+            return Ok(result);
+        }
     }
 }

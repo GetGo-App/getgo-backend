@@ -2,7 +2,9 @@
 using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.Message;
 using GetGo.Repository.Interfaces;
+using GetGo_BE.Enums.Message;
 using GetGo_BE.Services.Interfaces;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace GetGo_BE.Services.Implements
 {
@@ -25,6 +27,15 @@ namespace GetGo_BE.Services.Implements
             List<HistoryRequest> history = await _aIMessageHistoryRepository.GetAIChatHistory(request);
 
             return new AIChatRequest(history);
+        }
+
+        public async Task<List<HistoryRequest>> GetAIChatHistory(string userId)
+        {
+            return await _aIMessageHistoryRepository.GetAIChatHistory(new GetDialogMessageRequest
+            {
+                User1 = userId,
+                User2 = AIChatEnum.CHATAGENT.ToString(),
+            });
         }
     }
 }

@@ -7,5 +7,6 @@ namespace GetGo_BE.Services.Interfaces
     {
         public Task CreateAIMessageHistory(AIMessageHistory aIMessageHistory);
         public Task<AIChatRequest> GetAIChatHistory(GetDialogMessageRequest request);
+        public Task<List<HistoryRequest>> GetAIChatHistory(string userId);
     }
 }

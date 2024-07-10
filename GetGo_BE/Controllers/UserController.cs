@@ -96,7 +96,7 @@ namespace GetGo_BE.Controllers
         [Authorize]
         [HttpPatch(ApiEndPointConstant.User.UserPremiumEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [SwaggerOperation(Summary = "Change user pack")]
+        [SwaggerOperation(Summary = "Change user pack (Pack name: Premium/None")]
         public async Task<IActionResult> UpdateUserInfo(string id, string packName)
         {
             await _userService.ChangeUserPack(id, packName);
