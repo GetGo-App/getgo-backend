@@ -111,6 +111,31 @@ namespace GetGo.Repository.Implements
             return new AuthenticationResponse(token, newUser.UserName, newUser.Email, newUser.IsActive);
         }
 
+        public async Task<AuthenticationResponse> GoogleAuthentication(GoogleAuthRequest request)
+        {
+            User user = await _users.Find(u => u.Email.Equals(request.Email)).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                var token = JwtUtil.GenerateJwtToken(user);
+                return new AuthenticationResponse(token, user.UserName, user.Email, user.IsActive);
+            }
+            else
+            {
+                User newUser = new User
+                (
+                ObjectId.GenerateNewId().ToString(),
+                request.Email,
+                ObjectId.GenerateNewId().ToString(),
+                request.Email
+                );
+
+                await _users.InsertOneAsync(newUser);
+
+                var token = JwtUtil.GenerateJwtToken(newUser);
+                return new AuthenticationResponse(token, newUser.UserName, newUser.Email, newUser.IsActive);
+            }
+        }
+
         #endregion
 
         #region Otp forget code Method
@@ -119,7 +144,7 @@ namespace GetGo.Repository.Implements
             bool isEmail = true;
 
             User user = await _users.Find(u => u.Email.Equals(emailOrPhone)).FirstOrDefaultAsync();
-            if(user == null)
+            if (user == null)
             {
                 user = await _users.Find(u => u.PhoneNumber.Equals(emailOrPhone)).FirstOrDefaultAsync();
                 isEmail = false;
@@ -127,7 +152,7 @@ namespace GetGo.Repository.Implements
 
             if (user == null) return null;
 
-            user.ForgetPassCode =  otpCode;
+            user.ForgetPassCode = otpCode;
             await _users.ReplaceOneAsync(u => u.Id == user.Id, user);
 
             if (isEmail) return "Email";

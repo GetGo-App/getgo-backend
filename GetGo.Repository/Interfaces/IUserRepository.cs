@@ -23,5 +23,6 @@ namespace GetGo.Repository.Interfaces
 
         public Task<AuthenticationResponse> SignIn(SignInRequest request);
         public Task<AuthenticationResponse> SignUp(SignUpRequest request);
+        public Task<AuthenticationResponse> GoogleAuthentication(GoogleAuthRequest request);
     }
 }

@@ -61,6 +61,11 @@ namespace GetGo_BE.Services.Implements
             return await _userRepository.SignUp(request);
         }
 
+        public async Task<AuthenticationResponse> GoogleAuthentication(GoogleAuthRequest request)
+        {
+            return await _userRepository.GoogleAuthentication(request);
+        }
+
         public async Task UpdateUser(string username, UpdateUserRequest request)
         {
             await _userRepository.UpdateUser(username, request);

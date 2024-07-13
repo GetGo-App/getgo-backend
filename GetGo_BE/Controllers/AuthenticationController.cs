@@ -39,7 +39,7 @@ namespace GetGo_BE.Controllers
 
         [HttpPost(ApiEndPointConstant.Authentication.SignUpEndpoint)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status200OK)]
-        public async Task<IActionResult> SignUn(SignUpRequest request)
+        public async Task<IActionResult> SignUp(SignUpRequest request)
         {
             var result = await _userService.SignUp(request);
             if (result == null)
@@ -48,6 +48,24 @@ namespace GetGo_BE.Controllers
                 {
                     StatusCode = StatusCodes.Status400BadRequest,
                     Error = MessageConstant.Authentication.AlreadyUsedEmailOrUsername,
+                    TimeStamp = DateTime.Now
+                });
+            }
+            return Ok(result);
+        }
+
+        [HttpPost(ApiEndPointConstant.Authentication.GoogleAuthenEndpoint)]
+        [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status200OK)]
+        [ProducesErrorResponseType(typeof(UnauthorizedObjectResult))]
+        public async Task<IActionResult> GoogleAuthentication(GoogleAuthRequest request)
+        {
+            var result = await _userService.GoogleAuthentication(request);
+            if (result == null)
+            {
+                return Unauthorized(new ErrorResponse()
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized,
+                    Error = MessageConstant.Authentication.InvalidEmailOrPassword,
                     TimeStamp = DateTime.Now
                 });
             }

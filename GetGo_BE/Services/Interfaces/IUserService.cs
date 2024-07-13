@@ -22,5 +22,6 @@ namespace GetGo_BE.Services.Interfaces
 
         public Task<AuthenticationResponse> SignIn(SignInRequest request);
         public Task<AuthenticationResponse> SignUp(SignUpRequest request);
+        public Task<AuthenticationResponse> GoogleAuthentication(GoogleAuthRequest request);
     }
 }

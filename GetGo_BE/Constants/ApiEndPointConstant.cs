@@ -10,6 +10,7 @@
         {
             public const string SignInEndpoint = ApiEndpoint + "/sign-in";
             public const string SignUpEndpoint = ApiEndpoint + "/sign-up";
+            public const string GoogleAuthenEndpoint = ApiEndpoint + "/google-auth";
         }
 
         public static class Category
