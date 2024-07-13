@@ -114,7 +114,7 @@ namespace GetGo_BE.Controllers
             }
         }
 
-        [HttpPost(ApiEndPointConstant.Message.AIChatMessageEndpoint)]
+        [HttpGet(ApiEndPointConstant.Message.AIChatMessageHistoryEndpoint)]
         [ProducesResponseType(typeof(List<HistoryRequest>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get ai message history list")]
         public async Task<IActionResult> GetAIChatHistory(string userId)

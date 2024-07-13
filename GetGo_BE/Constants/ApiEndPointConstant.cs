@@ -65,6 +65,7 @@
             public const string MessageEndpoint = ApiEndpoint + "/messages/{id}";
             public const string DialogMessagesEndpoint = ApiEndpoint + "/messages/dialog";
             public const string AIChatMessageEndpoint = MessagesEndpoint + "/chat-agent";
+            public const string AIChatMessageHistoryEndpoint = AIChatMessageEndpoint + "/history";
         }
 
         public static class Status
