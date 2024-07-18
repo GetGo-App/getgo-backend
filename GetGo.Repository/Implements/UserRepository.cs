@@ -80,6 +80,21 @@ namespace GetGo.Repository.Implements
             await _users.DeleteOneAsync(filterDefinition);
             return;
         }
+
+        public async Task<string> GetUserSubscription(string id)
+        {
+            User user = await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
+            return user.Subscription;
+        }
+
+        public async Task<List<User>> GetUserFriends(string id)
+        {
+            User user = await _users.Find(u => u.Id == id).FirstOrDefaultAsync();
+
+            var filter = Builders<User>.Filter.In("Id", user.Friends);
+
+            return await _users.Find(filter).ToListAsync();
+        }
         #endregion
 
         #region Authentication

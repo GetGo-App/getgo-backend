@@ -36,7 +36,7 @@ namespace GetGo.Repository.Utils
             };
 
             //Add expiredTime of token
-            var expires = DateTime.Now.AddMinutes(30);
+            var expires = DateTime.Now.AddDays(1);
 
             //Create token
             var token = new JwtSecurityToken(issuer, audience, claims, notBefore: DateTime.Now, expires, credentials);

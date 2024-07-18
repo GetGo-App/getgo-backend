@@ -76,6 +76,13 @@
             public const string UserStatusEndpoint = ApiEndpoint + "/statuses/user/{userId}";
         }
 
+        public static class Story
+        {
+            public const string StoriesEndpoint = ApiEndpoint + "/stories";
+            public const string StoryEndpoint = StoriesEndpoint + "/{id}";
+            public const string UserStoriesEndpoint = StoriesEndpoint + "/user/{userId}";
+        }
+
         public static class User
         {
             public const string UsersEndpoint = ApiEndpoint + "/users";
@@ -86,6 +93,7 @@
             public const string UserFriendStatusesEndpoint = UserUserNameEndpoint + "/status";
 
             public const string UserEndpoint = UsersEndpoint + "/{id}/info";
+            public const string UserFriendsEndpoint = UsersEndpoint + "/{id}/friends";
             public const string UserPremiumEndpoint = UsersEndpoint + "/{id}/premium";
         }
     }

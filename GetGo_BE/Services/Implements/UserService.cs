@@ -56,6 +56,11 @@ namespace GetGo_BE.Services.Implements
             return await _userRepository.SignIn(request);
         }
 
+        public async Task<List<User>> GetUserFriends(string id)
+        {
+            return await _userRepository.GetUserFriends(id);
+        }
+
         public async Task<AuthenticationResponse> SignUp(SignUpRequest request)
         {
             return await _userRepository.SignUp(request);
@@ -69,6 +74,11 @@ namespace GetGo_BE.Services.Implements
         public async Task UpdateUser(string username, UpdateUserRequest request)
         {
             await _userRepository.UpdateUser(username, request);
+        }
+
+        public async Task<string> GetUserSubscription(string id)
+        {
+            return await _userRepository.GetUserSubscription(id);
         }
 
         public async Task<List<Location>> GetFavLocation(string username)

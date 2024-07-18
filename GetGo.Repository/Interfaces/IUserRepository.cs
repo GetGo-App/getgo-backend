@@ -18,6 +18,10 @@ namespace GetGo.Repository.Interfaces
         public Task ChangeUserPack(string id, string packName);
         public Task DeleteUser(string id);
 
+        public Task<List<User>> GetUserFriends(string id);
+
+        public Task<string> GetUserSubscription(string id);
+
         public Task<string> ValidateAndUpdateOtpCode(string emailOrPhone, string otpCode);
         public Task ResetPass(string password, string otpCode);
 

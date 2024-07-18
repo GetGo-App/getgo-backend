@@ -103,6 +103,17 @@ namespace GetGo_BE.Controllers
             return Ok("Action success");
         }
 
+        [Authorize]
+        [HttpGet(ApiEndPointConstant.User.UserFriendsEndpoint)]
+        [ProducesResponseType(typeof(List<Image>), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get user friends' images")]
+        public async Task<IActionResult> GetUserFriends(string id)
+        {
+            var result = await _userService.GetUserFriends(id);
+
+            return Ok(result);
+        }
+
         #region ResetPassword
         [HttpPost(ApiEndPointConstant.User.UserForgetPassEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]

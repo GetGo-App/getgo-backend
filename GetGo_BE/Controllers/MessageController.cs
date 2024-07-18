@@ -22,12 +22,15 @@ namespace GetGo_BE.Controllers
         private readonly IMessageService _messageService;
         private readonly IMapService _mapService;
         private readonly IAIMessageHistoryService _aiMessageHistoryService;
+        private readonly IUserService _userService;
 
-        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService, IAIMessageHistoryService aiMessageHistoryService) : base(logger)
+        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService, 
+            IAIMessageHistoryService aiMessageHistoryService, IUserService userService) : base(logger)
         {
             _messageService = messageService;
             _mapService = mapService;
             _aiMessageHistoryService = aiMessageHistoryService;
+            _userService = userService;
         }
 
         [HttpPost(ApiEndPointConstant.Message.MessagesEndpoint)]
@@ -64,6 +67,9 @@ namespace GetGo_BE.Controllers
         {
             try
             {
+                //Get user subscription
+                string userSubscription = await _userService.GetUserSubscription(userId);
+
                 //Create MessageHistory
                 AIMessageHistory message = new AIMessageHistory(userId, AIChatEnum.CHATAGENT.ToString(), DateTime.Now, question);
 
@@ -81,7 +87,7 @@ namespace GetGo_BE.Controllers
                     var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                     httpClient.DefaultRequestHeaders.Add("X-API-Key", "ZjFkOTk2MDQtOTUwMi00OTk3LWE4MWEtODc2N2E2MTc1YjM5");
-                    using (var response = await httpClient.PostAsync("https://pphuc25-getgo-ai.hf.space/agents/chat-agent", content))
+                    using (var response = await httpClient.PostAsync($"https://pphuc25-getgo-ai.hf.space/agents/chat-agent?user_status={userSubscription}", content))
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -92,15 +98,15 @@ namespace GetGo_BE.Controllers
                 }
 
                 //Add AI message to message history
-                if(result.text != null)
+                if(result.texts_message != null)
                 {
-                    message.Answer = result.text;
+                    message.Answer = result.texts_message;
                 }
 
                 //Add new Map
-                if (result.ids_location != null)
+                if (result.locations_message.locations != null)
                 {
-                    await _mapService.CreateMap(new CreateMapRequest(userId, result.ids_location));
+                    await _mapService.CreateMap(new CreateMapRequest(userId, result.locations_message.locations));
                 }
 
                 //Create message history
