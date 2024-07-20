@@ -58,7 +58,7 @@ namespace GetGo_BE.Controllers
             return Ok("Action success");
         }
 
-        [HttpDelete(ApiEndPointConstant.Story.StoriesEndpoint]
+        [HttpDelete(ApiEndPointConstant.Story.StoriesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Delete Story")]
         public async Task<IActionResult> DeleteStory(string id)

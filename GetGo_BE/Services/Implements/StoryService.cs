@@ -9,11 +9,13 @@ namespace GetGo_BE.Services.Implements
     public class StoryService : BaseService<StoryService>, IStoryService
     {
         private readonly IStoryRepository _storyRepository;
+        private readonly IUserRepository _userRepository;
 
         public StoryService(ILogger<StoryService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor,
-            IStoryRepository storyRepository) : base(logger, mapper, httpContextAccessor)
+            IStoryRepository storyRepository, IUserRepository userRepository) : base(logger, mapper, httpContextAccessor)
         {
             _storyRepository = storyRepository;
+            _userRepository = userRepository;
         }
 
         public async Task CreateStory(CreateStoryRequest request)
@@ -40,5 +42,10 @@ namespace GetGo_BE.Services.Implements
         {
             await _storyRepository.UpdateStory(id, request);
         }
+
+        //public async Task<List<Story>> GetFriendsStory(string id)
+        //{
+
+        //}
     }
 }

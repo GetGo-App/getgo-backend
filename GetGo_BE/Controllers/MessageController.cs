@@ -24,7 +24,7 @@ namespace GetGo_BE.Controllers
         private readonly IAIMessageHistoryService _aiMessageHistoryService;
         private readonly IUserService _userService;
 
-        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService, 
+        public MessageController(ILogger<MessageController> logger, IMessageService messageService, IMapService mapService,
             IAIMessageHistoryService aiMessageHistoryService, IUserService userService) : base(logger)
         {
             _messageService = messageService;
@@ -98,15 +98,18 @@ namespace GetGo_BE.Controllers
                 }
 
                 //Add AI message to message history
-                if(result.texts_message != null)
+                if (result.texts_message != null)
                 {
                     message.Answer = result.texts_message;
                 }
 
                 //Add new Map
-                if (result.locations_message.locations != null)
+                if (result.locations_message != null)
                 {
-                    await _mapService.CreateMap(new CreateMapRequest(userId, result.locations_message.locations));
+                    if (result.locations_message.locations != null)
+                    {
+                        await _mapService.CreateMap(new CreateMapRequest(userId, result.locations_message.locations));
+                    }
                 }
 
                 //Create message history
