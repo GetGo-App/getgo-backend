@@ -14,16 +14,16 @@ namespace GetGo.Domain.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = null!;
         public string Creator { get; set; }
-        public string Content { get; set; }
+        public string LinkImage { get; set; }
         public string Caption { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ExpiredAt { get; set;}
 
-        public Story(string creator, string content, string caption)
+        public Story(string creator, string linkImage, string caption)
         {
             Id = ObjectId.GenerateNewId().ToString();
             Creator = creator;
-            Content = content;
+            LinkImage = linkImage;
             Caption = caption;
             CreatedAt = DateTime.Now;
             ExpiredAt = DateTime.Now.AddDays(2);

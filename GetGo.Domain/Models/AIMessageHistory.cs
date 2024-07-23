@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GetGo.Domain.Payload.Response.Messages;
 
 namespace GetGo.Domain.Models
 {
@@ -17,7 +18,7 @@ namespace GetGo.Domain.Models
         public string User2 { get; set; }
         public DateTime Timestamp { get; set; }
         public string Question { get; set; }
-        public string? Answer { get; set; }
+        public LocationSuggestionMessageResponse? Answer { get; set; }
 
         public AIMessageHistory(string user1, string user2, DateTime timestamp, string question)
         {
@@ -26,7 +27,7 @@ namespace GetGo.Domain.Models
             User2 = user2;
             Timestamp = timestamp;
             Question = question;
-            Answer = String.Empty;
+            Answer = new LocationSuggestionMessageResponse();
         }
 
         public AIMessageHistory()

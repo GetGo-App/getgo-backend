@@ -49,7 +49,7 @@ namespace GetGo.Repository.Implements
         {
             Story story = await _stories.Find(st => st.Id.Equals(id)).FirstOrDefaultAsync();
             story.Caption = String.IsNullOrEmpty(request.Caption) ? story.Caption : request.Caption;
-            story.Content = String.IsNullOrEmpty(request.Content) ? story.Content : request.Content;
+            story.LinkImage = String.IsNullOrEmpty(request.Content) ? story.LinkImage : request.Content;
             await _stories.ReplaceOneAsync(st => st.Id == id, story);
         }
     }

@@ -76,7 +76,7 @@ namespace GetGo_BE.Controllers
                 var result = new LocationSuggestionMessageResponse();
                 using (var httpClient = new HttpClient())
                 {
-                    //Initialize chat history and question
+                    //Initialize chat history and question Fix
                     AIChatRequest request = await _aiMessageHistoryService.GetAIChatHistory(new GetDialogMessageRequest()
                     {
                         User1 = userId,
@@ -98,9 +98,9 @@ namespace GetGo_BE.Controllers
                 }
 
                 //Add AI message to message history
-                if (result.texts_message != null)
+                if (result != null)
                 {
-                    message.Answer = result.texts_message;
+                    message.Answer = result;
                 }
 
                 //Add new Map
@@ -125,7 +125,7 @@ namespace GetGo_BE.Controllers
 
         [HttpGet(ApiEndPointConstant.Message.AIChatMessageHistoryEndpoint)]
         [ProducesResponseType(typeof(List<HistoryRequest>), StatusCodes.Status200OK)]
-        [SwaggerOperation(Summary = "Get ai message history list")]
+        [SwaggerOperation(Summary = "Get ai message history list by userId")]
         public async Task<IActionResult> GetAIChatHistory(string userId)
         {
             var result = await _aiMessageHistoryService.GetAIChatHistory(userId);

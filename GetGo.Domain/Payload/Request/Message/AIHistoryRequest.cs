@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace GetGo.Domain.Payload.Request.Message
 {
-    public class HistoryRequest
+    public class AIHistoryRequest
     {
-        public string? question {  get; set; }
-        public LocationSuggestionMessageResponse? answer { get; set; }
+        public string? question { get; set; }
+        public string? answer { get; set; }
 
-        public HistoryRequest(string? question, LocationSuggestionMessageResponse? answer)
+        public AIHistoryRequest(string? question, string? answer)
         {
             this.question = question;
             this.answer = answer;

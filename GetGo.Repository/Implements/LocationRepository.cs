@@ -58,5 +58,19 @@ namespace GetGo.Repository.Implements
         {
             return await _tourismLocations.Find(tl => tl.City.Equals(city)).ToListAsync();
         }
+
+        public async Task<string> GetLocationName(List<int> id)
+        {
+            StringBuilder locations = new StringBuilder();
+            var filter = Builders<Location>.Filter.In("Id", id);
+
+            var result = await _tourismLocations.Find(filter).ToListAsync();
+            foreach (var location in result)
+            {
+                locations.Append($"{location.Name},");
+            }
+
+            return locations.ToString();
+        }
     }
 }

@@ -9,9 +9,9 @@ namespace GetGo.Domain.Payload.Request.Message
     public class AIChatRequest
     {
         public string question {  get; set; }
-        public List<HistoryRequest>? history { get; set; }
+        public List<AIHistoryRequest>? history { get; set; }
 
-        public AIChatRequest(string question, List<HistoryRequest>? history)
+        public AIChatRequest(string question, List<AIHistoryRequest>? history)
         {
             this.question = question;
             this.history = history;
@@ -20,10 +20,10 @@ namespace GetGo.Domain.Payload.Request.Message
         public AIChatRequest(string question)
         {
             this.question = question;
-            this.history = new List<HistoryRequest>();
+            this.history = new List<AIHistoryRequest>();
         }
 
-        public AIChatRequest(List<HistoryRequest>? history)
+        public AIChatRequest(List<AIHistoryRequest>? history)
         {
             this.question = String.Empty;
             this.history = history;
@@ -31,7 +31,7 @@ namespace GetGo.Domain.Payload.Request.Message
 
         public AIChatRequest()
         {
-            this.history = new List<HistoryRequest>();
+            this.history = new List<AIHistoryRequest>();
         }
     }
 }

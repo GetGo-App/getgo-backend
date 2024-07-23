@@ -11,6 +11,7 @@ namespace GetGo.Repository.Interfaces
     public interface IAIMessageHistoryRepository
     {
         public Task<List<HistoryRequest>> GetAIChatHistory(GetDialogMessageRequest request);
+        public Task<List<AIHistoryRequest>> GetAIChatHistoryForAIRequest(GetDialogMessageRequest request);
         public Task CreateAIMessageHistory(AIMessageHistory message);
     }
 }
