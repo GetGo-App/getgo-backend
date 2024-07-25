@@ -169,7 +169,7 @@ namespace GetGo_BE.Services.Implements
         private async Task SendOtpCodeToEmail(string email, string otpCode)
         {
             var emailToSend = new MimeMessage();
-            emailToSend.From.Add(MailboxAddress.Parse("getgoappsp@gmail.com"));
+            emailToSend.From.Add(MailboxAddress.Parse("appsp377@gmail.com"));
             emailToSend.To.Add(MailboxAddress.Parse(email));
             emailToSend.Subject = "Reset Password Code";
             emailToSend.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = $"Your OTP Code is {otpCode}" };
@@ -177,7 +177,7 @@ namespace GetGo_BE.Services.Implements
             using(var emailClient = new MailKit.Net.Smtp.SmtpClient())
             {
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                emailClient.Authenticate("getgoappsp@gmail.com", "jhht gdht haxt xofd");
+                emailClient.Authenticate("appsp377@gmail.com", "mpac zjfb iyax bgpd");
                 await emailClient.SendAsync(emailToSend);
                 emailClient.Disconnect(true);
             }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using static GetGo_BE.Constants.ApiEndPointConstant;
 
 namespace GetGo_BE.Controllers
 {
@@ -22,7 +23,7 @@ namespace GetGo_BE.Controllers
             _storyService = storyService;
         }
 
-        [HttpPost(ApiEndPointConstant.Story.StoriesEndpoint)]
+        [HttpPost(ApiEndPointConstant.StoryEP.StoriesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Create story")]
         public async Task<IActionResult> CreatStory([FromBody] CreateStoryRequest request)
@@ -31,7 +32,16 @@ namespace GetGo_BE.Controllers
             return Ok("Action success");
         }
 
-        [HttpGet(ApiEndPointConstant.Story.UserStoriesEndpoint)]
+        [HttpGet(ApiEndPointConstant.StoryEP.StoriesEndpoint)]
+        [ProducesResponseType(typeof(List<Story>), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get all stories")]
+        public async Task<IActionResult> GetAllStories()
+        {
+            var result = await _storyService.GetAllStories();
+            return Ok(result);
+        }
+
+        [HttpGet(ApiEndPointConstant.StoryEP.UserStoriesEndpoint)]
         [ProducesResponseType(typeof(List<Story>), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get user stories")]
         public async Task<IActionResult> GetUserStories(string userId)
@@ -40,7 +50,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpGet(ApiEndPointConstant.Story.StoryEndpoint)]
+        [HttpGet(ApiEndPointConstant.StoryEP.StoryEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Get story by id")]
         public async Task<IActionResult> GetStoryById(string id)
@@ -49,7 +59,7 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
-        [HttpPatch(ApiEndPointConstant.Story.StoriesEndpoint)]
+        [HttpPatch(ApiEndPointConstant.StoryEP.StoriesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Update story")]
         public async Task<IActionResult> UpdateStory(string id, [FromBody] UpdateStoryRequest request)
@@ -58,7 +68,7 @@ namespace GetGo_BE.Controllers
             return Ok("Action success");
         }
 
-        [HttpDelete(ApiEndPointConstant.Story.StoriesEndpoint)]
+        [HttpDelete(ApiEndPointConstant.StoryEP.StoriesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Delete Story")]
         public async Task<IActionResult> DeleteStory(string id)

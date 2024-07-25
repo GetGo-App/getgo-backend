@@ -76,7 +76,7 @@
             public const string UserStatusEndpoint = ApiEndpoint + "/statuses/user/{userId}";
         }
 
-        public static class Story
+        public static class StoryEP
         {
             public const string StoriesEndpoint = ApiEndpoint + "/stories";
             public const string StoryEndpoint = StoriesEndpoint + "/{id}";

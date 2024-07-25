@@ -28,6 +28,11 @@ namespace GetGo_BE.Services.Implements
             await _storyRepository.DeleteStory(id);
         }
 
+        public async Task<List<Story>> GetAllStories()
+        {
+            return await _storyRepository.GetAllStories();
+        }
+
         public async Task<Story> GetStoryById(string id)
         {
             return await _storyRepository.GetStoryById(id);

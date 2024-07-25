@@ -4,6 +4,7 @@ using GetGo.Domain.Models.Documents;
 using GetGo.Domain.Payload.Request.Story;
 using GetGo.Repository.Interfaces;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,11 @@ namespace GetGo.Repository.Implements
         public async Task<List<Story>> GetUserStories(string userId)
         {
             return await _stories.Find(m => m.Creator.Equals(userId)).ToListAsync();
+        }
+
+        public async Task<List<Story>> GetAllStories()
+        {
+            return await _stories.Find(new BsonDocument()).ToListAsync();
         }
 
         public async Task<Story> GetStoryById(string id)
