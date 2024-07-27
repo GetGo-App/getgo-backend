@@ -64,7 +64,7 @@ namespace GetGo.Repository.Implements
             return;
         }
 
-        public async Task UpdateReaction(string id, UpdateReactionRequest request)
+        public async Task UpdateReaction(string id, @string request)
         {
             Status status = await _status.Find(s => s.Id == id).FirstOrDefaultAsync();
             //bool isUserReacted = status.ReactedUsers.FirstOrDefault(ru => ru.Equals(request.ReactedUserId)) != null;

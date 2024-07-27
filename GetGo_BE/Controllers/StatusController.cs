@@ -77,7 +77,7 @@ namespace GetGo_BE.Controllers
         [HttpPatch(ApiEndPointConstant.Status.StatusReactionEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Update reaction in status")]
-        public async Task<IActionResult> UpdateReaction(string id, [FromBody]UpdateReactionRequest request)
+        public async Task<IActionResult> UpdateReaction(string id, [FromBody]@string request)
         {
             await _statusService.UpdateReaction(id, request);
             return Ok("Action success");

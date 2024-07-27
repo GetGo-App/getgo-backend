@@ -1,5 +1,6 @@
 ﻿using GetGo.Domain.Models;
 using GetGo.Domain.Payload.Request.Message;
+using GetGo.Domain.Payload.Request.Status;
 using GetGo.Domain.Payload.Request.Story;
 using GetGo_BE.Constants;
 using GetGo_BE.Services.Implements;
@@ -12,7 +13,7 @@ using static GetGo_BE.Constants.ApiEndPointConstant;
 
 namespace GetGo_BE.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class StoryController : BaseController<StoryController>
     {
@@ -59,12 +60,30 @@ namespace GetGo_BE.Controllers
             return Ok(result);
         }
 
+        [HttpGet(ApiEndPointConstant.StoryEP.StoryReactedUsersEndpoint)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get reacted users in story by story id")]
+        public async Task<IActionResult> GetReactedUsersInStory(string id)
+        {
+            var result = await _storyService.GetReactedUsersInStory(id);
+            return Ok(result);
+        }
+
         [HttpPatch(ApiEndPointConstant.StoryEP.StoriesEndpoint)]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [SwaggerOperation(Summary = "Update story")]
         public async Task<IActionResult> UpdateStory(string id, [FromBody] UpdateStoryRequest request)
         {
             await _storyService.UpdateStory(id, request);
+            return Ok("Action success");
+        }
+
+        [HttpPatch(ApiEndPointConstant.StoryEP.StoryReactionEndpoint)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Update story reaction")]
+        public async Task<IActionResult> UpdateStoryReaction(string id, [FromBody] StoryReactionRequest reactedUserId)
+        {
+            await _storyService.UpdateReaction(id, reactedUserId);
             return Ok("Action success");
         }
 

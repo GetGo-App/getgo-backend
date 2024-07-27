@@ -1,4 +1,5 @@
 ﻿using GetGo.Domain.Models;
+using GetGo.Domain.Payload.Request.Status;
 using GetGo.Domain.Payload.Request.Story;
 
 namespace GetGo_BE.Services.Interfaces
@@ -11,5 +12,8 @@ namespace GetGo_BE.Services.Interfaces
         public Task<List<Story>> GetAllStories();
         public Task DeleteStory(string id);
         public Task UpdateStory(string id, UpdateStoryRequest request);
+
+        public Task UpdateReaction(string id, StoryReactionRequest request);
+        public Task<List<User>> GetReactedUsersInStory(string id);
     }
 }

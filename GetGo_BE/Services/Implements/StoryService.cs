@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GetGo.Domain.Models;
+using GetGo.Domain.Payload.Request.Status;
 using GetGo.Domain.Payload.Request.Story;
 using GetGo.Repository.Interfaces;
 using GetGo_BE.Services.Interfaces;
@@ -48,9 +49,19 @@ namespace GetGo_BE.Services.Implements
             await _storyRepository.UpdateStory(id, request);
         }
 
-        //public async Task<List<Story>> GetFriendsStory(string id)
-        //{
+        public async Task UpdateReaction(string id, StoryReactionRequest request)
+        {
+            User reactedUser = await _userRepository.GetUserById(request.ReactedUserId);
 
-        //}
+            await _storyRepository.UpdateReaction(id, reactedUser);
+        }
+
+        public async Task<List<User>> GetReactedUsersInStory(string id)
+        {
+            Story story = await _storyRepository.GetStoryById(id);
+
+            List<User> users = await _userRepository.GetUserByIdList(story.ReactedUsers);
+            return users;
+        }
     }
 }

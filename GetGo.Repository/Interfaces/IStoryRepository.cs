@@ -1,4 +1,5 @@
 ﻿using GetGo.Domain.Models;
+using GetGo.Domain.Payload.Request.Status;
 using GetGo.Domain.Payload.Request.Story;
 using GetGo.Domain.Payload.Request.User;
 using Microsoft.Extensions.Options;
@@ -18,5 +19,7 @@ namespace GetGo.Repository.Interfaces
         public Task<List<Story>> GetAllStories();
         public Task DeleteStory(string id);
         public Task UpdateStory(string id, UpdateStoryRequest request);
+
+        public Task UpdateReaction(string id, User reactedUser);
     }
 }

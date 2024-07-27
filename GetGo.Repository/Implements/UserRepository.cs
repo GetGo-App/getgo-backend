@@ -95,6 +95,13 @@ namespace GetGo.Repository.Implements
 
             return await _users.Find(filter).ToListAsync();
         }
+
+        public async Task<List<User>> GetUserByIdList(List<string> userIds)
+        {
+            var filter = Builders<User>.Filter.In("Id", userIds);
+
+            return await _users.Find(filter).ToListAsync();
+        }
         #endregion
 
         #region Authentication

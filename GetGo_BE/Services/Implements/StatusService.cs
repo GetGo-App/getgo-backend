@@ -39,7 +39,7 @@ namespace GetGo_BE.Services.Implements
             await _statusRepository.UpdateStatus(id, request);
         }
 
-        public async Task UpdateReaction(string id, UpdateReactionRequest request)
+        public async Task UpdateReaction(string id, @string request)
         {
             await _statusRepository.UpdateReaction(id, request);
         }

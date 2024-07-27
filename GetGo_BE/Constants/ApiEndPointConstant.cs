@@ -81,6 +81,8 @@
             public const string StoriesEndpoint = ApiEndpoint + "/stories";
             public const string StoryEndpoint = StoriesEndpoint + "/{id}";
             public const string UserStoriesEndpoint = StoriesEndpoint + "/user/{userId}";
+            public const string StoryReactionEndpoint = StoriesEndpoint + "/{id}/reactions";
+            public const string StoryReactedUsersEndpoint = StoriesEndpoint + "/{id}/reacted-users";
         }
 
         public static class User

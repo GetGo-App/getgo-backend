@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GetGo.Domain.Payload.Request.Status
 {
-    public class UpdateReactionRequest
+    public class @string
     {
         public string ReactedUserId { get; set; }
         public bool IsReacted { get; set; }

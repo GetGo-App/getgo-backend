@@ -17,6 +17,6 @@ namespace GetGo.Repository.Interfaces
         public Task<List<Status>> GetFriendStatus(string userId);
         public Task UpdateStatus(string id, UpdateStatusRequest request);
         public Task DeleteStatus(string id);
-        public Task UpdateReaction(string id, UpdateReactionRequest request);
+        public Task UpdateReaction(string id, @string request);
     }
 }

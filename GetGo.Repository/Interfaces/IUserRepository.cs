@@ -21,6 +21,7 @@ namespace GetGo.Repository.Interfaces
         public Task<List<User>> GetUserFriends(string id);
 
         public Task<string> GetUserSubscription(string id);
+        public Task<List<User>> GetUserByIdList(List<string> userIds);
 
         public Task<string> ValidateAndUpdateOtpCode(string emailOrPhone, string otpCode);
         public Task ResetPass(string password, string otpCode);

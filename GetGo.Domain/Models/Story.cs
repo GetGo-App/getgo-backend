@@ -18,6 +18,8 @@ namespace GetGo.Domain.Models
         public string Caption { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ExpiredAt { get; set;}
+        public List<string> ReactedUsers { get; set; }
+        public int ReactCount { get; set; }
 
         public Story(string creator, string linkImage, string caption)
         {
@@ -27,6 +29,8 @@ namespace GetGo.Domain.Models
             Caption = caption;
             CreatedAt = DateTime.Now;
             ExpiredAt = DateTime.Now.AddDays(2);
+            ReactedUsers = new List<string>();
+            ReactCount = 0;
         }
     }
 }
