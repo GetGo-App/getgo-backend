@@ -117,12 +117,13 @@ This project is about the back-end of GetGo - a tourism support application whic
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/hntduong12345/GetGoBE.svg?style=for-the-badge
+[contributors-url]: https://github.com/hntduong12345/GetGoBE/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/hntduong12345/GetGoBE.svg?style=for-the-badge
+[forks-url]: https://github.com/hntduong12345/GetGoBE/network/members
+[stars-shield]: https://img.shields.io/github/stars/hntduong12345/GetGoBE.svg?style=for-the-badge
+[stars-url]: https://github.com/hntduong12345/GetGoBE/stargazers
+[issues-shield]: https://img.shields.io/github/issues/hntduong12345/GetGoBE.svg?style=for-the-badge
+[issues-url]: https://github.com/hntduong12345/GetGoBE/issues
+[license-shield]: https://img.shields.io/github/license/hntduong12345/GetGoBE.svg?style=for-the-badge
+[license-url]: https://github.com/hntduong12345/GetGoBE/blob/master/LICENSE.txt
