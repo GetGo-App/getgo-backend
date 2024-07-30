@@ -47,9 +47,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -66,8 +64,8 @@ This project is about the back-end of GetGo - a tourism support application whic
 
 
 ### Built With
-
-
+* [![.NET][.NET-shield]][.NET-url]
+* [![MongoDB][MongoDB-shield]][MongoDB-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -76,40 +74,39 @@ This project is about the back-end of GetGo - a tourism support application whic
 ## Getting Started
 
 ### Prerequisites
-
+* Visual Studio 2022/ Visual Studio Code
 
 ### Installation
-
-
+1. Clone the repo
+   ```sh
+   git clone https://github.com/hntduong12345/GetGoBE.git
+   ```
+2. Install NPM packages
+   For NuGet.exe, run the command for each project
+   ```sh
+   nuget install packages.config
+   ```
+   _For more detail, please refer to the [StackOverFlow](https://stackoverflow.com/questions/6876732/how-do-i-get-nuget-to-install-update-all-the-packages-in-the-packages-config)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
+If you have any suggestions that would make this project better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/EnhancementFeature`)
+3. Commit your Changes (`git commit -m 'Add some EnhancementFeature'`)
+4. Push to the Branch (`git push origin feature/EnhancementFeature`)
+5. Open a Pull Request
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
 ## Contact
+Your Name - hntduong2003@gmail.com
 
+Project Link: [https://github.com/hntduong12345/GetGoBE](https://github.com/hntduong12345/GetGoBE)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,3 +124,8 @@ This project is about the back-end of GetGo - a tourism support application whic
 [issues-url]: https://github.com/hntduong12345/GetGoBE/issues
 [license-shield]: https://img.shields.io/github/license/hntduong12345/GetGoBE.svg?style=for-the-badge
 [license-url]: https://github.com/hntduong12345/GetGoBE/blob/master/LICENSE.txt
+
+[.NET-shield]: https://img.shields.io/badge/.NET-7153DC?style=for-the-badge&logo=dotnet&logoColor=white
+[.NET-url]: https://learn.microsoft.com/vi-vn/dotnet/welcome
+[MongoDB-shield]: https://img.shields.io/badge/MongoDB-10964D?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
