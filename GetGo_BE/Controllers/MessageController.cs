@@ -82,7 +82,7 @@ namespace GetGo_BE.Controllers
                         User1 = userId,
                         User2 = AIChatEnum.CHATAGENT.ToString()
                     });
-                    request.question = question;
+                    request.question = question.ToLower();
 
                     var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
