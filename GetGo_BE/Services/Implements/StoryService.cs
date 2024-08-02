@@ -58,8 +58,10 @@ namespace GetGo_BE.Services.Implements
 
         public async Task<List<User>> GetReactedUsersInStory(string id)
         {
+            //Get to story by ID
             Story story = await _storyRepository.GetStoryById(id);
 
+            //Get the reacted users of the story
             List<User> users = await _userRepository.GetUserByIdList(story.ReactedUsers);
             return users;
         }

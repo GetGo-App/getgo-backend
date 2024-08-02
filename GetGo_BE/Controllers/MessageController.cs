@@ -70,13 +70,13 @@ namespace GetGo_BE.Controllers
                 //Get user subscription
                 string userSubscription = await _userService.GetUserSubscription(userId);
 
-                //Create MessageHistory
+                //Create MessageHistory for storing
                 AIMessageHistory message = new AIMessageHistory(userId, AIChatEnum.CHATAGENT.ToString(), DateTime.Now, question);
 
                 var result = new LocationSuggestionMessageResponse();
                 using (var httpClient = new HttpClient())
                 {
-                    //Initialize chat history and question Fix
+                    //Create Request for AI chat
                     AIChatRequest request = await _aiMessageHistoryService.GetAIChatHistory(new GetDialogMessageRequest()
                     {
                         User1 = userId,
@@ -84,9 +84,13 @@ namespace GetGo_BE.Controllers
                     });
                     request.question = question.ToLower();
 
+                    //Convert content into content in URL Body
                     var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
+                    //Add API-KEY of AI
                     httpClient.DefaultRequestHeaders.Add("X-API-Key", "ZjFkOTk2MDQtOTUwMi00OTk3LWE4MWEtODc2N2E2MTc1YjM5");
+                    
+                    //Call AI API for usage
                     using (var response = await httpClient.PostAsync($"https://pphuc25-getgo-ai.hf.space/agents/chat-agent?user_status={userSubscription}", content))
                     {
                         if (response.IsSuccessStatusCode)

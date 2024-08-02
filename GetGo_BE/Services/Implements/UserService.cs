@@ -83,8 +83,10 @@ namespace GetGo_BE.Services.Implements
 
         public async Task<List<Location>> GetFavLocation(string username)
         {
+            //Get user by username
             User user = await _userRepository.GetUserByUsername(username);
 
+            //Get user favourite location
             List<Location> favLocations = new List<Location>();
 
             if (user.Favourites == null) return null;
@@ -99,8 +101,10 @@ namespace GetGo_BE.Services.Implements
 
         public async Task<List<Image>> GetFriendImage(string username)
         {
+            //Get user by username
             User user = await _userRepository.GetUserByUsername(username);
 
+            //Get image of user friends
             List<Image> friendsImage = new List<Image>();
 
             if (user.Friends == null) return null;
@@ -119,8 +123,10 @@ namespace GetGo_BE.Services.Implements
 
         public async Task<List<Status>> GetFriendStatus(string username)
         {
+            //Get user by username
             User user = await _userRepository.GetUserByUsername(username);
 
+            //Get status of friends
             List<Status> friendsStatus = new List<Status>();
 
             if (user.Friends == null) return null;
@@ -148,11 +154,13 @@ namespace GetGo_BE.Services.Implements
 
         public async Task SendOtpCode(string emailOrPhone)
         {
+            //Generate OTP Code
             Random random = new Random();
             string otpCode = random.Next(100000, 999999).ToString();
 
             string result = await _userRepository.ValidateAndUpdateOtpCode(emailOrPhone, otpCode);
 
+            //Catch the input is Email or Phone Number to send OTP Code (Currently Phone Number Cannot be used)
             switch (result)
             {
                 case "Email":

@@ -30,7 +30,7 @@ namespace GetGo_BE.Services.Implements
         {
             List<HistoryRequest> history = await _aIMessageHistoryRepository.GetAIChatHistory(request);
 
-            //Executing
+            //Take stored AI Message History and convert into AI History request for call AI API
             var aiHistory = await ChangeHistoryToString(history);
 
             return new AIChatRequest(aiHistory);
@@ -49,6 +49,7 @@ namespace GetGo_BE.Services.Implements
         {
             List<AIHistoryRequest> result = new List<AIHistoryRequest>();
 
+            //Take Message information
             foreach (var history in request)
             {
                 AIHistoryRequest aiHistory = new AIHistoryRequest(history.question, String.Empty);

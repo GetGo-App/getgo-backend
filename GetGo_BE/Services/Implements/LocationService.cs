@@ -57,6 +57,8 @@ namespace GetGo_BE.Services.Implements
         public async Task UpdateRatings()
         {
             var locations = await _tourismLocationRepository.GetTourismLocationList();
+
+            //Get rating of each locations
             foreach(Location place in locations)
             {
                 var comments = await _commentRepository.GetLocationComment(place.Id);
