@@ -17,14 +17,14 @@
   <p align="center">
     A fantastic README to get your projects started!
     <br />
-    <a href="https://github.com/hntduong12345/GetGoBE"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/GetGo-App/getgo-backend"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/hntduong12345/GetGoBE">View Demo</a>
+    <a href="https://github.com/GetGo-App/getgo-backend">View Demo</a>
     ·
-    <a href="https://github.com/hntduong12345/GetGoBE/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/GetGo-App/getgo-backend/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/hntduong12345/GetGoBE/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/GetGo-App/getgo-backend/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -117,7 +117,7 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 Your Name - hntduong2003@gmail.com
 
-Project Link: [https://github.com/hntduong12345/GetGoBE](https://github.com/hntduong12345/GetGoBE)
+Project Link: [https://github.com/GetGo-App/getgo-backend](https://github.com/GetGo-App/getgo-backend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,16 +125,16 @@ Project Link: [https://github.com/hntduong12345/GetGoBE](https://github.com/hntd
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/hntduong12345/GetGoBE.svg?style=for-the-badge
-[contributors-url]: https://github.com/hntduong12345/GetGoBE/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/hntduong12345/GetGoBE.svg?style=for-the-badge
-[forks-url]: https://github.com/hntduong12345/GetGoBE/network/members
-[stars-shield]: https://img.shields.io/github/stars/hntduong12345/GetGoBE.svg?style=for-the-badge
-[stars-url]: https://github.com/hntduong12345/GetGoBE/stargazers
-[issues-shield]: https://img.shields.io/github/issues/hntduong12345/GetGoBE.svg?style=for-the-badge
-[issues-url]: https://github.com/hntduong12345/GetGoBE/issues
-[license-shield]: https://img.shields.io/github/license/hntduong12345/GetGoBE.svg?style=for-the-badge
-[license-url]: https://github.com/hntduong12345/GetGoBE/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/GetGo-App/getgo-backend.svg?style=for-the-badge
+[contributors-url]: https://github.com/GetGo-App/getgo-backend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/GetGo-App/getgo-backend.svg?style=for-the-badge
+[forks-url]: https://github.com/GetGo-App/getgo-backend/network/members
+[stars-shield]: https://img.shields.io/github/stars/GetGo-App/getgo-backend.svg?style=for-the-badge
+[stars-url]: https://github.com/GetGo-App/getgo-backend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/GetGo-App/getgo-backend.svg?style=for-the-badge
+[issues-url]: https://github.com/GetGo-App/getgo-backend/issues
+[license-shield]: https://img.shields.io/github/license/GetGo-App/getgo-backend.svg?style=for-the-badge
+[license-url]: https://github.com/GetGo-App/getgo-backend/blob/master/LICENSE.txt
 
 [.NET-shield]: https://img.shields.io/badge/.NET-7153DC?style=for-the-badge&logo=dotnet&logoColor=white
 [.NET-url]: https://learn.microsoft.com/vi-vn/dotnet/welcome
