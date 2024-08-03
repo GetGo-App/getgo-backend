@@ -99,6 +99,7 @@ This project is about the back-end of GetGo - a tourism support application whic
 ![Run](https://github.com/user-attachments/assets/677d4292-b62c-4f85-bace-bc39b4d17121)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- CONTRIBUTING -->
 ## Contributing
 If you have any suggestions that would make this project better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
