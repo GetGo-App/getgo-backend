@@ -89,6 +89,10 @@ This project is about the back-end of GetGo - a tourism support application whic
    _For more detail, please refer to the [StackOverFlow](https://stackoverflow.com/questions/6876732/how-do-i-get-nuget-to-install-update-all-the-packages-in-the-packages-config)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Build and Run
+1. Choose GetGo_BE as Startup project
+2. Press F5 or choose GetGo_BE Button
+
 <!-- CONTRIBUTING -->
 ## Contributing
 If you have any suggestions that would make this project better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
