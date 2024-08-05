@@ -1,5 +1,3 @@
-<a id="readme-top"></a>
-
 # Get Go Back-End
 <!-- 
 [![Contributors][contributors-shield]][contributors-url]
@@ -73,6 +71,7 @@ We welcome contributions!
 
 Duong Thai - hntduong2003@gmail.com 
 
+<a id="readme-top"></a>
 
 
 
