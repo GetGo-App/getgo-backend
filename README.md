@@ -1,11 +1,11 @@
 <a id="readme-top"></a>
 
 # Get Go Back-End
-
+<!-- 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Issues][issues-shield]][issues-url] -->
 
 
 [![.NET][.NET-shield]][.NET-url]
