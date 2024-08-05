@@ -1,125 +1,85 @@
 <a id="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
+# Get Go Back-End
+<!-- 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-<!-- PROJECT TITLE -->
-<br />
-<div align="center">
-  <h1 align="center">
-      Get Go Back-End
-  </h1>
-
-  <p align="center">
-    A fantastic README to get your projects started!
-    <br />
-    <a href="https://github.com/GetGo-App/getgo-backend"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/GetGo-App/getgo-backend">View Demo</a>
-    ·
-    <a href="https://github.com/GetGo-App/getgo-backend/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/GetGo-App/getgo-backend/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
+[![Issues][issues-shield]][issues-url] -->
 
 
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#run">Run</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
+[![.NET][.NET-shield]][.NET-url]
+[![MongoDB][MongoDB-shield]][MongoDB-url]
 
 
+A back-end service for GetGo, a tourism support application that helps users plan suitable tourist routes.
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- **Explore the docs »** [https://github.com/GetGo-App/getgo-backend](https://github.com/GetGo-App/getgo-backend)  -->
 
-This project is about the back-end of GetGo - a tourism support application which assist people for suggesting a suitable tourist route.
+<!-- **View Demo »** [https://github.com/GetGo-App/getgo-backend](https://github.com/GetGo-App/getgo-backend) -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Table of Contents
+1. [About the Project](#about-the-project)
+2. [Getting Started](#getting-started)
+3. [Contributing](#contributing)
+4. [Contact](#contact)
 
+## About The Project <a id="about-the-project"></a>
 
+Get Go Back-End provides the core functionality for the GetGo tourism application, handling data storage, retrieval, and the logic behind route suggestions.
 
-### Built With
-* [![.NET][.NET-shield]][.NET-url]
-* [![MongoDB][MongoDB-shield]][MongoDB-url]
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
+## Getting Started <a id="getting-started"></a>
 
 ### Prerequisites
-* Visual Studio 2022/ Visual Studio Code
+
+* Visual Studio 2022 or Visual Studio Code
+* .NET 7 SDK
 
 ### Installation
-1. Clone the repo
-   ```sh
-   git clone https://github.com/hntduong12345/GetGoBE.git
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/GetGo-App/getgo-backend
    ```
-2. Install NPM packages
-   For NuGet.exe, run the command for each project
-   ```sh
-   nuget install packages.config
+
+2. **Install Dependencies:**
+   ```bash
+   dotnet restore
    ```
-   _For more detail, please refer to the [StackOverFlow](https://stackoverflow.com/questions/6876732/how-do-i-get-nuget-to-install-update-all-the-packages-in-the-packages-config)_
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Run
-1. Choose GetGo_BE as Startup project
+### How to Run (Visual Studio 2022 / Visual Studio Code)
 
-   ![SetStartUp](https://github.com/user-attachments/assets/40dd6d06-f155-4005-98b9-66d1b679d1e2)
+1. **Set the Startup Project:**
+   * Open the solution in Visual Studio.
+   * In the Solution Explorer, right-click on the `getgo-backend` project.
+   * Select "Set as Startup Project."
 
-2. Press F5 or choose GetGo_BE Button
-![Run](https://github.com/user-attachments/assets/677d4292-b62c-4f85-bace-bc39b4d17121)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-## Contributing
-If you have any suggestions that would make this project better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/EnhancementFeature`)
-3. Commit your Changes (`git commit -m 'Add some EnhancementFeature'`)
-4. Push to the Branch (`git push origin feature/EnhancementFeature`)
-5. Open a Pull Request
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+2. **Start the Project:**
+   * Press `F5` or click the "Start" button in Visual Studio.
+   * (If using VS Code) Make sure the C# extension is installed, then press `F5` or use the Run icon in the sidebar.
 
 
-<!-- CONTACT -->
-## Contact
-Your Name - hntduong2003@gmail.com
+## Contributing <a id="contributing"></a>
 
-Project Link: [https://github.com/GetGo-App/getgo-backend](https://github.com/GetGo-App/getgo-backend)
+We welcome contributions!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+1. Fork the project.
+2. Create a new branch for your feature (`git checkout -b feature/your-feature-name`).
+3. Make your changes and commit them (`git commit -m 'Add your feature'`).
+4. Push your changes to your fork (`git push origin feature/your-feature-name`).
+5. Open a pull request in this repository.
+
+## Contact <a id="contact"></a>
+
+Duong Thai - hntduong2003@gmail.com 
+
+
+
+
+
+
+
+
 
 
 
@@ -140,3 +100,5 @@ Project Link: [https://github.com/GetGo-App/getgo-backend](https://github.com/Ge
 [.NET-url]: https://learn.microsoft.com/vi-vn/dotnet/welcome
 [MongoDB-shield]: https://img.shields.io/badge/MongoDB-10964D?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com/
+
+
